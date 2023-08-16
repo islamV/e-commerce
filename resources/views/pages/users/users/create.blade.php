@@ -258,7 +258,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('UsersList.store') }}" method="post">
+                    <form action="{{ route('UsersList.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -290,11 +290,20 @@
                                 value="{{ old('age') }}">
                         </div>
                         <div class="form-group">
+                            <label for="input-select">Gender</label>
+                            <select class="form-control" id="input-select" name="gender">
+                  
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                           
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="input-select">Access Role </label>
                             <select class="form-control" id="input-select" name="role">
                   
                                     <option value="Admin">Admin</option>
-                                    <option value="Employee">Employee</option>
+                                    <option value="Employee">Subllier</option>
                                     <option value="User">User</option>
                            
 
@@ -312,10 +321,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="inputText3" class="col-form-label">Password </label>
-                            <input id="inputText3" type="password" class="form-control" name="password">
+                            <label for="inputText4" class="col-form-label">password</label>
+                            <input id="inputText4" type="password" class="form-control" name="password">
                         </div>
-           
+                     <div class="form-group">
+                        <input type="file" name="image">
+                    
+                    </div>
+
                         <button class="btn btn-rounded btn-success">Add</button>
                     </form>
                 </div>

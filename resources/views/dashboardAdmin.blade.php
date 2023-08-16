@@ -1,7 +1,7 @@
 @extends('index')
 @section('titel')
-Dashbord
+Dashboard
 @endsection
 @section('content')
-<h1>Welcome to Dashbord</h1>
-@stop
+<h1>welcome in Admin Dashboard</h1>
+@endsection

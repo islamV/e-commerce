@@ -19,10 +19,10 @@
                                   <div id="submenu-1-2" class="collapse submenu" style="">
                                       <ul class="nav flex-column">
                                           <li class="nav-item">
-                                              <a class="nav-link" href="{{route('dashbord')}}">E Commerce Dashboard</a>
+                                              <a class="nav-link" href="{{route('dashboard')}}">E Commerce Dashboard</a>
                                           </li>
                                           <li class="nav-item">
-                                              <a class="nav-link" href="{{route('ProductList.index')}}">Product List</a>
+                                              <a class="nav-link" href="">Product List</a>
                                           </li>
                                           <li class="nav-item">
                                               <a class="nav-link" href="ecommerce-product-single.html">Product Single</a>
@@ -34,10 +34,10 @@
                                   </div>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{route('finance')}}">Finance</a>
+                                  <a class="nav-link" href="">Finance</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{route('sales')}}">Sales</a>
+                                  <a class="nav-link" href="">Sales</a>
                               </li>
                           
                           </ul>
@@ -65,10 +65,10 @@
                     <div id="submenu-2" class="collapse submenu" style="">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('UsersList.index')}}">Users <span class="badge badge-success">New</span></a>
+                                <a class="nav-link" href="{{route('UsersList.index')}}">Users </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('EmployeeList.index')}}">Employees<span class="badge badge-success">New</span></a>
+                                <a class="nav-link" href="">Employees<span class="badge badge-success">New</span></a>
                             </li>
                             
                             <li class="nav-item">

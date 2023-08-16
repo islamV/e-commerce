@@ -46,11 +46,12 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
+                                    {{-- <td>{{ $user->age }}</td> --}}
                                     <td>{{ $user->country }}</td>
                                     <td>
                                         @if ($user->role == 'Admin')
                                             <span class='label label-lg label-danger'>{{ $user->role }}</span>
-                                        @elseif ($user->role == 'Employee')
+                                        @elseif ($user->role == 'User')
                                             <span class='label label-lg label-success'>{{ $user->role }}</span>
                                         @else
                                             <span class='label label-lg label-primary'>{{ $user->role }}</span>
