@@ -258,7 +258,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('UsersList.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('UsersList.store') }}" method="post">
                         @csrf
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -324,10 +324,7 @@
                             <label for="inputText4" class="col-form-label">password</label>
                             <input id="inputText4" type="password" class="form-control" name="password">
                         </div>
-                     <div class="form-group">
-                        <input type="file" name="image">
-                    
-                    </div>
+                   
 
                         <button class="btn btn-rounded btn-success">Add</button>
                     </form>

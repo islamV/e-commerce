@@ -260,7 +260,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('EmployeeList.update', ['EmployeeL $employee->id]) }}" method="post">
+                    <form action="{{ route('EmployeeList.update', ['EmployeeL' =>$employee->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         @if ($errors->any())

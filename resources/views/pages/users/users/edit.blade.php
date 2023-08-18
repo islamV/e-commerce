@@ -257,9 +257,27 @@
             <div class="section-block" id="basicform">
                 <h3 class="section-title">Edit user</h3>
             </div>
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Done!</strong> {{ session('success') }}!
+                <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </a>
+            </div>
+        @endif
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('UsersList.update', ['UsersList' => $user->id]) }}" method="post" enctype="multipart/form-data>
+                    <div class="form-group">
+                        <label for="inputText0" class="col-form-label">Image </label>
+                        <form action="{{route('Image.update',['Image'=>$user->id])}}" method="post" enctype="multipart/form-data" >
+                        @csrf
+                        @method('PUT')
+                        <input type="file" name='image' class="btn btn-primary">
+                        <button class="btn btn-primary" type="submit">Upload Image</button> 
+                        </form>
+                    </div>
+
+                    <form action="{{ route('UsersList.update' ,['UsersList'=>$user->id]) }}" method="post" >
 
                         @csrf
                         @method('PUT')
@@ -277,7 +295,8 @@
                                 <div class="row">
                                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-4 col-12">
                                         <div class="text-center">
-                                            <img src="{{ asset('photos/' . $user->image) }}" alt="User Avatar"
+                                           
+                                            <img src="{{asset('photos/'.$userImage)}}" alt="User Avatar"
                                                 class="rounded-circle user-avatar-xxl">
                                         </div>
                                       
@@ -298,7 +317,7 @@
                                                             class="fa fa-map-marker-alt mr-2 text-primary "></i>{{ $user->country }}</span>
                                                     <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">Joined date:
                                                         {{ $user->created_at }} </span>
-                                                    <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">Male
+                                                    <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{$user->gender}}
                                                     </span>
                                                     <span
                                                         class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{ $user->age }}
@@ -368,11 +387,6 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <input type="file" name="image">
-                        
-                        </div>
-    
                         <button class="btn btn-rounded btn-success">Update</button>
                     </form>
                 </div>
