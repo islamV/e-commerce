@@ -265,40 +265,7 @@ $countries = [
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        <div class="mt-4">
-            <x-input-label for="phone" :value="__('phone')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" />
-            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
-        </div>
-        <div class="mt-4">
-            <x-input-label for="age" :value="__('age')" />
-            <x-text-input id="age" class="block mt-1 w-full" type="text" name="age" :value="old('age')" required autocomplete="age" />
-            <x-input-error :messages="$errors->get('age')" class="mt-2" />
-        </div>
-
-            
-
-        <div class="form-group">
-            <label for="input-select">Country</label>
-            
-            <select class="form-control" id="countries" name="country">
-             @foreach ( $countries as $country )
-                 <option value="{{$country}}">{{$country}}</option>
-             @endforeach
-            </select>
-            <x-input-error :messages="$errors->get('country')" class="mt-2" />
-            
-        </div>
-        <div class="form-group">
-                <label for="input-select">Gender</label>
-                <select class="form-control" id="input-select" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                
-                </select>
-                    <x-input-error :messages="$errors->get('gender')" class="mt-2" />
-        </div>
-
+       
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />

@@ -23,13 +23,13 @@
                     <div class="user-avatar-address">
                         <p class="border-bottom pb-3">
                             <span class="d-xl-inline-block d-block mb-2"><i
-                                    class="fa fa-map-marker-alt mr-2 text-primary "></i>{{ $user->country }}</span>
+                                    class="fa fa-map-marker-alt mr-2 text-primary "></i>{{ $user->profile->country }}</span>
                             <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">Joined date:
                                 {{ $user->created_at }} </span>
-                            <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{$user->gender}}
+                            <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{$user->profile->gender}}
                             </span>
                             <span
-                                class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{ $user->age }}
+                                class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{ $user->profile->age }}
                                 Year Old </span>
                         </p>
                         <div class="mt-3">

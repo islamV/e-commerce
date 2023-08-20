@@ -72,10 +72,10 @@ class ImageController extends Controller
     public function update(Request $request, string $id)
     {
         // Retrieve the existing image data
-        $existingImage = Image::where('user_id', $id)->first();
+        $existingImage = Image::where('image_id', $id)->first();
     
         $data = $request->validate([
-            'image' => 'sometimes|image', // 'sometimes' allows validation to pass if no image is provided
+            'image',
         ]);
     
         // Update the image if a new image is provided
@@ -86,8 +86,8 @@ class ImageController extends Controller
             $file->move(public_path('photos'), $filename);
     
             // Delete the old image file if it exists
-            if ($existingImage && file_exists(public_path('photos/' . $existingImage->image))) {
-                unlink(public_path('photos/' . $existingImage->image));
+            if ($existingImage && file_exists(public_path('photos/'.$existingImage->image))) {
+                unlink(public_path('photos/'.$existingImage->image));
             }
     
             $data['image'] = $filename;
@@ -100,10 +100,9 @@ class ImageController extends Controller
         if ($existingImage) {
             $existingImage->update($data);
         } else {
-            $data['user_id'] = $id;
+            $data['image_id'] = $id;
             Image::create($data);
         }
-    
         return redirect()->back()->with('success', 'Image updated successfully.');
     }
     

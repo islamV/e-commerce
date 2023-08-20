@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    if(Auth::user()->role=="Admin"){
+    if(Auth::user()->profile->role =="Admin"){
 
         return view('dashboardAdmin');
     }else{

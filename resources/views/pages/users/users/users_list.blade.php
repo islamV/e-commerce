@@ -33,6 +33,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone </th>
+                                <th>Age </th>
                                 <th>Country</th>
                                 <th>Access Role </th>
                                 <th>Join At</th>
@@ -45,16 +46,16 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->phone }}</td>
-                                    {{-- <td>{{ $user->age }}</td> --}}
-                                    <td>{{ $user->country }}</td>
+                                    <td>{{ $user->profile->phone }}</td>
+                                    <td>{{ $user->profile->age }}</td>
+                                    <td>{{ $user->profile->country }}</td>
                                     <td>
-                                        @if ($user->role == 'Admin')
-                                            <span class='label label-lg label-danger'>{{ $user->role }}</span>
-                                        @elseif ($user->role == 'User')
-                                            <span class='label label-lg label-success'>{{ $user->role }}</span>
+                                        @if ($user->profile->role == 'Admin')
+                                            <span class='label label-lg label-danger'>{{ $user->profile->role }}</span>
+                                        @elseif ($user->profile->role == 'User')
+                                            <span class='label label-lg label-success'>{{ $user->profile->role }}</span>
                                         @else
-                                            <span class='label label-lg label-primary'>{{ $user->role }}</span>
+                                            <span class='label label-lg label-primary'>{{ $user->profile->role }}</span>
                                         @endif
                                     </td>
                                     <td>{{ $user->created_at }}</td>

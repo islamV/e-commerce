@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UsersUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
 use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -42,7 +44,7 @@ class UserslistController extends Controller
 
         $data =  $request->validate([
             'name' => 'required|string',
-            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'email' => ['email', 'max:255'],
             'phone' => 'required|string',
             'age' => 'required|string',
             'role' => 'required|string',
@@ -52,9 +54,8 @@ class UserslistController extends Controller
 
         ]);
 
-
-
-        User::create($data);
+       $user= User::create($data);
+       $user->profile()->create($data);
         return redirect('UsersList')->with(['success' => 'Adding new User successfuly']);
     }
 
@@ -65,7 +66,6 @@ class UserslistController extends Controller
     {
         $users = User::find($id);
         $image = Image::find($id);
-
         return view('pages.users.users.view', compact('users', 'image'));
     }
 
@@ -75,18 +75,17 @@ class UserslistController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        $image = Image::where('user_id' ,$id)->latest()->first();
+        $image = Image::where('image_id' ,$id)->latest()->first();
+        $userImage =" ";
         if ( $image ==null &&  $user->gender  =="male") {
 
             $userImage ="real.jpg";
        }elseif ($image ==null && $user->gender =="female") {
         $userImage ="cat.jpg";
        }
-       else {
-    
+       else{
         $userImage =$image->image;
        }
-
         return view('pages.users.users.edit', compact('user', 'userImage'));
     }
 
@@ -94,20 +93,21 @@ class UserslistController extends Controller
      * Update the specified resource in storage.
      */
 
-    public function update(Request  $request, string $id): RedirectResponse
+    public function update(UsersUpdateRequest  $request, string $id): RedirectResponse
     {
-        $data =  $request->validate([
-            'name' => 'required|string',
-            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'phone' => 'required|string',
-            'age' => 'required|string',
-            'role' => 'required|string',
-            'gender' => 'required|string',
-            'country' => 'required|string',
+       
+        $request->validated();
+
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
+        }
+        $request->user()->profile->update([
+            'phone'=>$request->phone,
+            'age'=>$request->age,
+            'country'=>$request->country,
+            'gender'=>$request->gender,
         ]);
-
-
-        User::where('id', $id)->update($data);
+  $request->user()->save();
 
         return redirect()->back()->with(['success' => 'Updated Profile successfuly']);
     }

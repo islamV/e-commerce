@@ -21,11 +21,6 @@ class User extends Authenticatable  implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
-        'phone',
-        'country',
-        'age',
-        'gender',
-        'role',
         'password',
     ];
 
@@ -49,7 +44,10 @@ class User extends Authenticatable  implements MustVerifyEmail
         'password' => 'hashed',
     ];
     public function image(){
-        return $this->hasOne(Image::class);
+        return $this->morphOne(Image::class ,'image');
+    }
+    public function profile(){
+        return $this->morphOne(Profile::class ,'profile');
     }
     public function getCreatedAtAttribute(){
         return \Carbon\Carbon::parse($this->attributes['created_at'])->format('d/M/Y');

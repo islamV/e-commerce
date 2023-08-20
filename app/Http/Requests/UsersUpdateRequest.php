@@ -16,9 +16,14 @@ class UsersUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['string', 'max:255'],
+            'name' => 'required|string',
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
-            'role' =>['string','max:255' ]
+            'phone' => 'required|string',
+            'age' => 'required|string',
+            'role' => 'required|string',
+            'gender' => 'required|string',
+            'country' => 'required|string',
+
         ];
     }
 }

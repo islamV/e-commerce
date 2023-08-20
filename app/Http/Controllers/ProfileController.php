@@ -16,6 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -25,14 +26,20 @@ class ProfileController extends Controller
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
+    {     
+
+    $request->validated();
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
-
-        $request->user()->save();
+        $request->user()->profile->update([
+            'phone'=>$request->phone,
+            'age'=>$request->age,
+            'country'=>$request->country,
+            'gender'=>$request->gender,
+        ]);
+  $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile updated');
     }

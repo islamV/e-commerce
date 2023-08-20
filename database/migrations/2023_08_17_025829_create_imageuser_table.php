@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->foreignId('user_id')->constrained('users');
+            $table->string('image')->default('avatar.jpg');
+            $table->morphs('image');
             $table->timestamps();
         });
     }

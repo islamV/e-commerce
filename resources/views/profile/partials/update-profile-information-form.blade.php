@@ -303,29 +303,29 @@
         </div>
         <div>
             <x-input-label for="age" :value="__('Phone number')" />
-            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->phone)" required autofocus autocomplete="phone" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full" :value="old('phone', $user->profile->phone)" required autofocus autocomplete="phone" />
                 <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                 </div>
                 
                 <div>
                     <x-input-label for="phone" :value="__('Your age')" />
-                    <x-text-input id="age" name="age" type="text" class="mt-1 block w-full" :value="old('age', $user->age)" required autofocus autocomplete="age" />
+                    <x-text-input id="age" name="age" type="text" class="mt-1 block w-full" :value="old('age', $user->profile->age)" required autofocus autocomplete="age" />
                     <x-input-error class="mt-2" :messages="$errors->get('age')" />
                 </div>
                 <div >
                     <x-input-label for="email" :value="__('Gender')" />
                     <select class="form-control" id="input-select" name="gender">
-                            <option @selected($user->gender == 'male') value="male">Male</option>
-                            <option @selected($user->gender == 'female') value="female">Female</option>
+                            <option @selected($user->profile->gender == 'male') value="male">Male</option>
+                            <option @selected($user->profile->gender == 'female') value="female">Female</option>
                     </select>
                 </div>
 
                 <div >
              
                     <x-input-label for="country" :value="__('Country')" />  
-                    <select name="gender"  class="form-control" >             
+                    <select name="country"  class="form-control" >             
                         @foreach ($countries as   $country )
-                            <option @selected($user->country == $country)  value="{{ $country }}">{{  $country  }}</option>
+                            <option @selected($user->profile->country == $country)  value="{{ $country }}">{{  $country  }}</option>
                         @endforeach
 
                     </select>

@@ -314,13 +314,13 @@
                                             <div class="user-avatar-address">
                                                 <p class="border-bottom pb-3">
                                                     <span class="d-xl-inline-block d-block mb-2"><i
-                                                            class="fa fa-map-marker-alt mr-2 text-primary "></i>{{ $user->country }}</span>
+                                                            class="fa fa-map-marker-alt mr-2 text-primary "></i>{{ $user->profile->country }}</span>
                                                     <span class="mb-2 ml-xl-4 d-xl-inline-block d-block">Joined date:
                                                         {{ $user->created_at }} </span>
-                                                    <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{$user->gender}}
+                                                    <span class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{$user->profile->gender}}
                                                     </span>
                                                     <span
-                                                        class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{ $user->age }}
+                                                        class=" mb-2 d-xl-inline-block d-block ml-xl-4">{{ $user->profile->age }}
                                                         Year Old </span>
                                                 </p>
                                                 <div class="mt-3">
@@ -346,33 +346,34 @@
                                 name="email" value="{{ $user->email }}">
                         </div>
                         <div class="form-group">
+                            <label for="inputText2" class="col-form-label">Phone Number </label>
+                            <input id="inputText2" type="text" class="form-control" name="phone"
+                                value="{{ $user->profile->phone }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputText3" class="col-form-label">Age </label>
+                            <input id="inputText3" type="text" class="form-control" name="age"
+                                value="{{ $user->profile->age }}">
+                        </div>
+                        <div class="form-group">
                             <label for="input-select">Country</label>
                             <select class="form-control" id="input-select" name="country">
 
                                 @foreach ($countries as $country)
-                                    <option @selected($user->country == $country) value="{{ $country }}">{{ $country }}
+                                    <option @selected($user->profile->country == $country) value="{{ $country }}">{{ $country }}
                                     </option>
                                 @endforeach
 
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label for="inputText2" class="col-form-label">Phone Number </label>
-                            <input id="inputText2" type="text" class="form-control" name="phone"
-                                value="{{ $user->phone }}">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputText3" class="col-form-label">Age </label>
-                            <input id="inputText3" type="text" class="form-control" name="age"
-                                value="{{ $user->age }}">
-                        </div>
+                   
                         <div class="form-group">
                             <label for="input-select">Gender </label>
                             <select class="form-control" id="input-select" name="gender">
 
-                                <option @selected($user->gender == 'male') value="male">Male</option>
-                                <option @selected($user->gender == 'female') value="female">Female</option>
+                                <option @selected($user->profile->gender == 'male') value="male">Male</option>
+                                <option @selected($user->profile->gender == 'female') value="female">Female</option>
 
                             </select>
                         </div>
@@ -381,13 +382,13 @@
                             <label for="input-select">Access Role </label>
                             <select class="form-control" id="input-select" name="role">
 
-                                <option @selected($user->role == 'Admin') value="Admin">Admin</option>
-                                <option @selected($user->role == 'Employee') value="Employee">Employee</option>
-                                <option @selected($user->role == 'User') value="User">User</option>
+                                <option @selected($user->profile->role == 'Admin') value="Admin">Admin</option>
+                                <option @selected($user->profile->role == 'Employee') value="Employee">Employee</option>
+                                <option @selected($user->profile->role == 'User') value="User">User</option>
                             </select>
                         </div>
 
-                        <button class="btn btn-rounded btn-success">Update</button>
+                        <button class="btn btn-rounded btn-dark">Update</button>
                     </form>
                 </div>
 

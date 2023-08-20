@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
-    public function user(){
-        return $this->belongsTo(User::class); //one to one relationship
+    public function image(){
+        return $this->morphTo(); //one to one relationship
     }
     protected $fillable=[
         'image',
-        'user_id'
-    ];
+ ];
 }
