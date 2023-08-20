@@ -295,7 +295,6 @@
                   
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
-                           
                             </select>
                         </div>
                         <div class="form-group">

@@ -42,7 +42,7 @@ class UserslistController extends Controller
 
         $data =  $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
+            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'phone' => 'required|string',
             'age' => 'required|string',
             'role' => 'required|string',
@@ -98,7 +98,7 @@ class UserslistController extends Controller
     {
         $data =  $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email',
+            'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'phone' => 'required|string',
             'age' => 'required|string',
             'role' => 'required|string',
