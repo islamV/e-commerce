@@ -16,14 +16,10 @@
             <div class="container-fluid dashboard-content ">
                 {{-- @include('layouts.pageheader') --}}
                 @yield('content')
-
             </div>
         </div>
     </div>
-
-    @include('layouts.sidebar')
-
-
+    @include('layouts.sidebar') 
 </body>
 <script src="{{ asset('assets/libs/js/contries.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
@@ -85,11 +81,11 @@
 <!-- dashboard sales js-->
 <script src="{{ asset('assets/libs/js/dashboard-sales.js') }}"></script>
 
-
 <script src="https://cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <script src="https://g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js">
+    
 </script>
 
 </html>

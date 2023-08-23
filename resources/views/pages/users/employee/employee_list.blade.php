@@ -31,12 +31,14 @@ Employee list
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Position</th>
                                 <th>Email</th>
                                 <th>phone</th>
-                                <th>Country</th>
+                                <th>Position</th>
                                 <th>Office</th>
-                                <th>Age</th>
+                                <th>Country</th>
+                                <th>City</th>
+                                <th>Gender</th>
+                                <th>Birth Day</th>
                                 <th>Salary</th>
                                 <th>Start date</th>
                                 <th>View Details</th>
@@ -47,12 +49,14 @@ Employee list
                             @foreach ($employees as $employee)
                                 <tr>
                                     <td>{{ $employee->name }}</td>
-                                    <td>{{ $employee->position }}</td>
                                     <td>{{ $employee->email }}</td>
                                     <td>{{ $employee->phone }}</td>
-                                    <td>{{ $employee->country }}</td>
+                                    <td>{{ $employee->position }}</td>
                                     <td>{{ $employee->office }}</td>
-                                    <td>{{ $employee->age }}</td>
+                                    <td>{{ $employee->country }}</td>
+                                    <td>{{ $employee->city }}</td>
+                                    <td>{{ $employee->gender }}</td>
+                                    <td>{{ $employee->birthDay }}</td>
                                     <td>{{ $employee->salary }}</td>
                                     <td>{{ $employee->created_at }}</td>
                                     <td>

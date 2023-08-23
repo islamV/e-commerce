@@ -46,10 +46,10 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
-
-        Auth::login($user);
-       $user->profile()->create();
-       $user->image()->create();
+    $user->profile()->create();
+    $user->image()->create();
+  Auth::login($user);
+   
         return redirect(RouteServiceProvider::HOME);
     }
 }

@@ -49,13 +49,13 @@
                         <ul class="nav flex-column">
 
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/cards.html">Laptops & Computers <span class="label label-sm label-success"> New</span></a>
+                                <a class="nav-link" href="pages/cards.html">Laptops & Computers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/cards.html">Smart Phones <span class="label label-sm label-success"> New</span></a>
+                                <a class="nav-link" href="pages/cards.html">Smart Phones</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/cards.html"> Smart TV  <span class="label label-sm label-success"> New</span></a>
+                                <a class="nav-link" href="pages/cards.html"> Smart TV </a>
                             </li>
                         </ul>
                     </div>
@@ -68,12 +68,9 @@
                                 <a class="nav-link" href="{{route('UsersList.index')}}">Users </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Employees<span class="badge badge-success">New</span></a>
+                                <a class="nav-link" href="{{route('EmployeeList.index')}}">Employees</a>
                             </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="">Customers <span class="badge badge-success">New</span></a>
-                            </li>
+                        
                         </ul>
                     </div>
                 </li>

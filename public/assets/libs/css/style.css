@@ -5198,7 +5198,7 @@ Pills vertical
 
 .table td,
 .table th {
-    padding: 10px;
+    padding: 5px;
     vertical-align: middle;
     border-top: 1px solid #e6e6f2;
     font-weight: normal;
@@ -5206,7 +5206,7 @@ Pills vertical
 
 .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #e6e6f2;
+    border-bottom: 1px solid #e6e6f2;
 }
 
 .table thead th,

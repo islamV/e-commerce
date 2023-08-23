@@ -4,5 +4,5 @@ Dashboard
 @endsection
 
 @section('content')
-<h1>welcome ..........</h1>
+@include('big-ecommerce-main.index')
 @endsection

@@ -56,6 +56,7 @@ class UserslistController extends Controller
 
        $user= User::create($data);
        $user->profile()->create($data);
+       $user->image()->create();
         return redirect('UsersList')->with(['success' => 'Adding new User successfuly']);
     }
 
@@ -77,10 +78,10 @@ class UserslistController extends Controller
         $user = User::find($id);
         $image = Image::where('image_id' ,$id)->latest()->first();
         $userImage =" ";
-        if ( $image ==null &&  $user->gender  =="male") {
+        if ( $image ==null &&  $user->profile->gender  =="male") {
 
             $userImage ="real.jpg";
-       }elseif ($image ==null && $user->gender =="female") {
+       }elseif ($image ==null && $user->profile->gender =="female") {
         $userImage ="cat.jpg";
        }
        else{
@@ -107,7 +108,9 @@ class UserslistController extends Controller
             'country'=>$request->country,
             'gender'=>$request->gender,
         ]);
-  $request->user()->save();
+       $request->user()->save();
+       $request->user()->profile->save();
+      
 
         return redirect()->back()->with(['success' => 'Updated Profile successfuly']);
     }

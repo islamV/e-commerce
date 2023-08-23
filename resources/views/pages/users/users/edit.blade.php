@@ -276,7 +276,7 @@
                         <button class="btn btn-primary" type="submit">Upload Image</button> 
                         </form>
                     </div>
-
+                          
                     <form action="{{ route('UsersList.update' ,['UsersList'=>$user->id]) }}" method="post" >
 
                         @csrf

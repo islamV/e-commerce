@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserslistController;
-use App\Http\Controllers\ImageController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +25,7 @@ Route::get('/dashboard', function () {
 
         return view('dashboardAdmin');
     }else{
-        return view('dashboardUser');
+        return view('big-ecommerce-main.index');
     }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -37,4 +36,5 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource('/Image','ImageController');
 Route::resource('UsersList' ,'UserslistController');
+Route::resource('EmployeeList' ,'EmployeeController');
 require __DIR__.'/auth.php';

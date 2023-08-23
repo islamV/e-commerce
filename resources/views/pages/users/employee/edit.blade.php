@@ -260,7 +260,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('EmployeeList.update', ['EmployeeL' =>$employee->id]) }}" method="post">
+                    <form action="{{ route('EmployeeList.update', ['EmployeeList' =>$employee->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         @if ($errors->any())
@@ -303,24 +303,42 @@
 
                             </select>
                         </div>
+                      
                         <div class="form-group">
+                          
                             <label for="input-select">Country</label>
-                            <select class="form-control" id="input-select" name="country">
-
+                            <select class="form-control" id="input-select" name="country" placeholder="select">
                                 @foreach ($countries as $country)
-                                    <option @selected($employee->country == $country) value="{{ $country }}">{{ $country }}
-                                    </option>
+                                    <option @selected($employee->country == $country) value="{{ $country }}">{{ $country }}</option>
                                 @endforeach
-
-
                             </select>
+                            {{-- city --}}
+                            <label for="input-select">City</label>
+                            <select class="form-control" id="input-select" name="city" aria-placeholder="select">
+                                @foreach ($countries as $country)
+                                    <option  @selected($employee->city == $country) value="{{ $country }}">{{ $country }}</option>
+                                @endforeach
+                            </select>
+                        </select>
                         </div>
-
-                        <div class="form-group">
-                            <label for="inputText3" class="col-form-label">age </label>
-                            <input id="inputText3" type="text" class="form-control" name="age"
-                                value="{{ $employee->age }}">
-                        </div>
+                       
+                        <div class="form-group"> 
+                       
+                            <label for="inputText4" class="col-form-label">Gender</label>
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" name="gender" @selected($employee->gender == "male")  value="male" class="custom-control-input"><span class="custom-control-label">Male</span>
+                            </label>
+                            <label class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" name="gender" value="female" @selected($employee->gender == "female") class="custom-control-input"><span class="custom-control-label">Female</span>
+                            </label>
+                                
+                        </div>   
+                        <div class="form-group"> 
+                       
+                            <label for="inputText4" class="col-form-label">Birth Day </label>
+                            <input id="inputText4" type="date" class="form-control" name="birthDay"
+                                value="{{ old('birthday',$employee->birthDay) }}">
+                        </div>  
                         <label for="inputText3" class="col-form-label">Salary </label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend"><span class="input-group-text">$</span></div>
