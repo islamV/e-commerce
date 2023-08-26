@@ -5,12 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ asset('app.css') }}">
+    @stack('css')
 
     <title>@yield('titel')</title>
 </head>
 
 <body>
     @include('layouts.header')
+    @include('layouts.sidebar') 
     <div class="dashboard-wrapper">
         <div class="dashboard-ecommerce">
             <div class="container-fluid dashboard-content ">
@@ -19,7 +21,6 @@
             </div>
         </div>
     </div>
-    @include('layouts.sidebar') 
 </body>
 <script src="{{ asset('assets/libs/js/contries.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
@@ -70,8 +71,6 @@
 <script src="{{ asset('assets/vendor/charts/charts-bundle/Chart.bundle.js') }}"></script>
 <script src="{{ asset('assets/vendor/charts/charts-bundle/chartjs.js') }}"></script>
 
-<!-- main js-->
-<script src="{{ asset('assets/libs/js/main-js.js') }}"></script>
 <!-- jvactormap js-->
 <script src="{{ asset('assets/vendor/jvectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
@@ -84,10 +83,7 @@
 <script src="https://cdn.tutorialjinni.com/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.tutorialjinni.com/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.tutorialjinni.com/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-<script src="https://g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js">
-    
-</script>
-
+<script src="https://g.tutorialjinni.com/mojoaxel/bootstrap-select-country/dist/js/bootstrap-select-country.min.js"></script>
 </html>
 
 <script>

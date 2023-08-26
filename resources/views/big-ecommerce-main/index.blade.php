@@ -1659,11 +1659,6 @@
         </div>
     </footer>
 
-    <!-- Swiper JS -->
-    <script src="{{asset('userdashboard/swiperJs/swiper-bundle.min.js')}}"></script>
-
-    <!-- Linke File JS -->
-    <script src="{{asset('userdashboard/main.js')}}"></script>
 
 </body>
 </html>

@@ -267,7 +267,7 @@
         @endif
             <div class="card">
                 <div class="card-body">
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <label for="inputText0" class="col-form-label">Image </label>
                         <form action="{{route('Image.update',['Image'=>$user->id])}}" method="post" enctype="multipart/form-data" >
                         @csrf
@@ -276,8 +276,9 @@
                         <button class="btn btn-primary" type="submit">Upload Image</button> 
                         </form>
                     </div>
-                           --}}
+                          
                     <form action="{{ route('UsersList.update' ,['UsersList'=>$user->id]) }}" method="post" >
+
                         @csrf
                         @method('PUT')
                         @if ($errors->any())

@@ -22,7 +22,7 @@
                                               <a class="nav-link" href="{{route('dashboard')}}">E Commerce Dashboard</a>
                                           </li>
                                           <li class="nav-item">
-                                              <a class="nav-link" href="">Product List</a>
+                                              <a class="nav-link" href="{{route('Products.index')}}">Product List</a>
                                           </li>
                                           <li class="nav-item">
                                               <a class="nav-link" href="ecommerce-product-single.html">Product Single</a>
@@ -57,6 +57,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="pages/cards.html"> Smart TV </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages/cards.html"> Controllers </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages/cards.html"> Smart Watches</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="pages/cards.html">Headphones</a>
+                                </li>
                         </ul>
                     </div>
                 </li>

@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Alexandria', sans-serif;
+}
+
+body {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.nav {
+    width: 100%;
+    height: 65px;
+    background-color: #12a61c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    gap: 5px;
+    position: relative;
+}
+
+.nav .card {
+    width: 130px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    position: relative;
+    padding: 0 10px;
+    transition: 0.3s;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+.nav .card:hover {
+    opacity: 0.5;
+}
+
+.nav .card::after {
+    position: absolute;
+    content: '';
+    width: 2px;
+    height: 20px;
+    background-color: #1d1d1d69;
+    right: 0;
+}
+
+.nav .card_lang::after,
+.card_adderss::after,
+.card_logo::after {
+    display: none;
+}
+
+.nav .card_link span,
+.nav .card_fov span {
+    font-size: 13px;
+    color: #1d1d1d;
+    font-weight: 600;
+}
+
+.nav .card_account .log_name {
+    font-size: 12px;
+    color: #1d1d1d;
+    font-weight: 600;
+}
+
+.nav .card_account img {
+    width: 15px;
+    transition: 0.3s;
+}
+
+.nav .card_account .card_title {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.nav .card_account .card_title .account_name {
+    font-size: 12px;
+    color: #1d1d1d;
+}
+
+.nav .card_account .card_title .profile {
+    font-size: 15px;
+    color: #1d1d1d;
+}
+
+#open_menu {
+    display: none;
+}
+
+#open_menu:checked~.menu {
+    display: flex;
+}
+
+#open_menu:checked~.card_account img {
+    transform: rotate(180deg);
+}
+
+.nav .menu {
+    position: absolute;
+    width: 180px;
+    height: fit-content;
+    top: 60px;
+    left: 298px;
+    background-color: white;
+    box-shadow: 0 0 10px 0 #1d1d1d1f;
+    display: none;
+    transition: 0.3s;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+.nav .menu::before {
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    top: -5px;
+    left: 10px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+.nav .menu ul {
+    width: 100%;
+    height: 100%;
+    display: block;
+    direction: rtl;
+    padding: 10px 0;
+    z-index: 999;
+}
+
+.nav .menu ul li {
+    display: block;
+    list-style: none;
+    width: 100%;
+}
+
+.nav .menu ul li a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    gap: 10px;
+    text-decoration: none;
+    color: #1d1d1d;
+    transition: 0.3s;
+    padding: 0 15px;
+}
+
+.nav .menu ul li a:hover {
+    background-color: #1d1d1d10;
+}
+
+.nav .menu .log_out {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #1d1d1d10;
+    text-decoration: none;
+    color: #1d1d1d;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.nav .menu .log_out:hover {
+    opacity: 0.5;
+}
+
+.nav .card_lang span{
+    color: #1d1d1d;
+}
+
+.nav #search {
+    width: 60%;
+    height: 40px;
+    text-align: end;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
+
+.nav #search:focus {
+    outline: none;
+}
+
+.nav .card_adderss {
+    width: 250px;
+    justify-content: end;
+    gap: 10px;
+}
+
+.nav .card_logo img {
+    width: 100px;
+}
+
+.nav .card_adderss .card_title {
+    text-align: end;
+    overflow: hidden;
+}
+
+.nav .card_adderss .card_title span:nth-of-type(1) {
+    font-size: 12px;
+    color: #1d1d1d;
+}
+
+.nav .card_adderss .card_title span:nth-of-type(2) {
+    font-size: 15px;
+    color: #1d1d1d;
+}

@@ -2,7 +2,8 @@
 <nav class="t-header">
     <div class="t-header-content-wrapper">
         <div class="t-header-content">
-            <a class="navbar-brand" href="{{route('dashboard')}}">islam</a>
+            <img src="img/default.png" alt="">
+            <h3></h3>
             <ul class="nav ml-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#" id="notificationDropdown" data-toggle="dropdown"
@@ -62,33 +63,6 @@
                     </div>
                 </li>
             
-                        <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
-                                    src="{{asset('photos/'.Auth::user()->image->image)}}"
-                                    class="user-avatar-md rounded-circle"></a>
-                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
-                                aria-labelledby="navbarDropdownMenuLink2">
-                                <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name">{{Auth::user()->name}}</h5>
-                                    
-                                    <span class="badge-dot badge-success mr-1"></span><span class="ml-2">Available</span>
-                                </div>
-                                <a class="dropdown-item" href="{{route('profile.edit')}}"><i class="fas fa-user mr-2"></i>{{_('Account')}}</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                    
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-        
-                                    <x-dropdown-link :href="route('logout')"
-                                            onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
-                                     <i class="fas fa-power-off mr-2"></i>   {{ __('Log Out') }}
-                                    </x-dropdown-link>
-                                </form>
-                            </div>
-                        </li>
-                </div>
         </ul>
     </div>
     </div>

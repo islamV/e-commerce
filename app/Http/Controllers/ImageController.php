@@ -75,7 +75,9 @@ class ImageController extends Controller
         $existingImage = Image::where('image_id', $id)->first();
     
         $data = $request->validate([
-            'image',
+            'image1',
+            'image2',
+            'image3',
         ]);
     
         // Update the image if a new image is provided

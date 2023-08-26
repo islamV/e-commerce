@@ -56,7 +56,6 @@ class UserslistController extends Controller
 
        $user= User::create($data);
        $user->profile()->create($data);
-       $user->image()->create();
         return redirect('UsersList')->with(['success' => 'Adding new User successfuly']);
     }
 
@@ -66,7 +65,7 @@ class UserslistController extends Controller
     public function show(string $id)
     {
         $users = User::find($id);
-        $image = Image::find($id);
+
         return view('pages.users.users.view', compact('users', 'image'));
     }
 
@@ -76,17 +75,7 @@ class UserslistController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
-        $image = Image::where('image_id' ,$id)->latest()->first();
-        $userImage =" ";
-        if ( $image ==null &&  $user->profile->gender  =="male") {
 
-            $userImage ="real.jpg";
-       }elseif ($image ==null && $user->profile->gender =="female") {
-        $userImage ="cat.jpg";
-       }
-       else{
-        $userImage =$image->image;
-       }
         return view('pages.users.users.edit', compact('user', 'userImage'));
     }
 
