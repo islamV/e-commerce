@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -33,7 +35,7 @@ class ProductsController extends Controller
      */
     public function store(Request $request): RedirectResponse{
         // dd($request->all());
-        
+
      $data = $request->validate([
         'title'=>'required|string',
         'description'=>'required|string',
@@ -41,10 +43,27 @@ class ProductsController extends Controller
         'availability'=>'required|boolean',
         'quantity'=>'required|integer',
         'category_name'=> 'required|string',
+        'image' => 'required|array',
+        'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    
+      
      ]);
 
-    $product = Product::create($data);
-    $product->category()->create($data);
+
+     $imageData = [];
+
+     foreach ($data['image'] as $image) {
+        $extension = $image->getClientOriginalExtension();
+        $imageName = time() . '_' . mt_rand(1000, 9999) . '.' . $extension;
+        $image->move(public_path('photos'), $imageName);
+    
+        $imageData[] = $imageName; // Store only the image name
+     }
+$data['image'] =$imageData;
+
+     $product = Product::create($data);
+     $product->category()->create($data); 
+    $product->image()->create($data);
 
     return redirect('Products')->with('success' ,'Add new product successfuly');
     }
@@ -54,7 +73,12 @@ class ProductsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product=Product::find($id)->first();
+
+   
+     $images=Image::find($id);
+
+     return view('pages.dashbord.products.view',compact(['product' ,'images']));
     }
 
     /**
@@ -78,6 +102,13 @@ class ProductsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Category::where('product_id',$id)->delete();
+      Product::where('id',$id)->delete();
+     return  redirect('Products')->with('success' ,'deleted product successfuly');
+    }
+
+    public function buy(string $id){
+        $product= Product::find($id);
+        return view('big-ecommerce-main.buy product' ,compact('product'));
     }
 }

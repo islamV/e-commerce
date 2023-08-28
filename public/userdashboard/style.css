@@ -327,7 +327,7 @@ header .header-info .search-bar .btn-srch{
     height: 100%;
     width: 150px;
     background-color: var(--main-color);
-    color: white;
+    color: var(--dark-color);
     cursor: pointer;
 }
 
@@ -672,7 +672,7 @@ header select option{
     height: 100%;
     width: 150px;
     background-color: var(--main-color);
-    color: white;
+    color: var(--dark-color);
     cursor: pointer;
 }
 

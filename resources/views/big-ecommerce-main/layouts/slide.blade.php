@@ -71,13 +71,13 @@
         <div class="slide-swp swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide swiper-slide1">
-                    <img src="https://wallpaper.dog/large/17215436.jpg" alt="">
+                    <img src="img/slider-01.jpg" alt="">
                 </div>
                 <div class="swiper-slide swiper-slide2">
-                    <img src="https://wallpaper.dog/large/17215436.jpg" alt="">
+                    <img src="img/slider-03.jpg"" alt="">
                 </div>
                 <div class="swiper-slide swiper-slide3">
-                    <img src="https://wallpaper.dog/large/17215436.jpg" alt="">
+                    <img src="img/slider-02.jpg"" alt="">
                 </div>
              
             </div>

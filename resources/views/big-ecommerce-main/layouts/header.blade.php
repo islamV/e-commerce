@@ -23,6 +23,13 @@
  </a>
  <div class="menu">
     <ul>
+        @if(Route::has('login'))
+        @if (Auth::user()->profile->role == "Admin")
+          <li><a href="{{route('dashboard')}}"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
+            <span>Dashboard</span></a></li>  
+        @endif
+        
+
         <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
                 <span>الاسم</span></a></li>
         <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
@@ -30,9 +37,8 @@
         <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
                 <span>الاسم</span></a></li>
         <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
-                <span>الاسم</span></a></li>
-        <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
-                <span>الاسم</span></a></li>
+                <span>الاسم</span></a></li>\
+@endif
     </ul>
     <a href="{{route('login')}}" class="log_out">Log out</a>
 </div>

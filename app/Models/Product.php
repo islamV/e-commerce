@@ -16,7 +16,7 @@ class Product extends Model
         return $this->belongsToMany(order::class);
     }
     public function image(){
-        return $this->morphOne(Image::class ,'product');
+        return $this->hasMany(Image::class);
     }
     public function getAvailabilityAttribute(){
         if($this->attributes['availability']==1){

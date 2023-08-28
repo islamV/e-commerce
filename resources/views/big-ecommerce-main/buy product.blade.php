@@ -1,22 +1,88 @@
-@extends('indexUser')  
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>buy</title>
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="{{asset('userdashboard/swiperJs/swiper-bundle.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('userdashboard/main.css')}}" />
+
+
+    <!-- Link Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Link File CSS -->
+    <link rel="stylesheet" href="{{asset('userdashboard/style.css')}}">
+</head>
+<body class="buy-product-bag menu-side-in-bag">
+    <header>
+
+        <div class="header-top">
+         @include('big-ecommerce-main.layouts.header')
+        </div>
+
+        <div class="header-bottom">
+           <div class="contanier">
+            <i id="open-side" class="fa-solid fa-bars"></i>
+            <ul class="nav-links">
+                
+                <li><a href="index.html">Home</a></li>
+
+                <li>
+                    <a href="features.html">Features</a>
+                </li>
+
+                <li><a href="about.html">about us</a></li>
+                <li><a href="contact.html">contact</a></li>
+
+            </ul>
+
+            <div class="headr-bottom-right">
+                    <div class="currency">
+                        <select>
+                            <option value="">USD</option>
+                            <option value="">EUR</option>
+                            <option value="">SAR</option>
+                            <option value="">PKR</option>
+                        </select>
+                    </div>
+
+                    <div class="lnag">
+                        <select name="" id="">
+                            <option value="">English</option>
+                            <option value="">Germany</option>
+                            <option value="">Arabic</option>
+                            <option value="">Pakistan</option>
+                        </select>
+                    </div>
+            </div>
+           </div>
+        </div>
+
+
+</header>
+
     <section class="product-details">
         <div class="contanier">
             <div class="product-buy">
                 <div class="img-product">
-                    <img id="big-img" src="img/product-9.jpg" alt="">
+                    <img id="big-img" src="{{asset('photos/'.$product->image[0]->image[0])}}" alt="">
 
                     <div class="small-img">
-                        <img onclick="myProduct(this.src)" src="img/product-9.jpg" alt="">
-                        <img onclick="myProduct(this.src)" src="img/product-5.jpg" alt="">
-                        <img onclick="myProduct(this.src)" src="img/product-3.jpg" alt="">
-                        <img onclick="myProduct(this.src)" src="img/product-12.jpg" alt="">
+                        <img onclick="myProduct(this.src)" src="{{asset('photos/'. $product->image[0]->image[0])}}" alt="">
+                        <img onclick="myProduct(this.src)" src="{{asset('photos/'. $product->image[0]->image[1])}}" alt="">
+                        <img onclick="myProduct(this.src)" src="{{asset('photos/'. $product->image[0]->image[2])}}" alt="">
+                  
                     </div>
                 </div>
 
                 <div class="product-name-price">
                     
-                        <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
+                        <a class="product-item-link"> {{$product->title}}</a>
                         <div class="stars">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -25,24 +91,24 @@
                             <i class="fa-solid fa-star-half-stroke"></i>
                         </div>
                         <div class="price">
-                            <span>$120.00</span>
-                            <del>$125.00</del>
+                            <span>${{$product->price}}</span>
+                            <del>$1000</del>
                         </div>
                         
                         <div class="stock-model">
-                            <p>Avaailability: <span>In Stock</span></p>
+                            <p>Avaailability: <span>{{$product->availability}}</span></p>
 
                             <p>SKU: <span>Samsung C49J89: £875, Debenhams Plus</span></p>
 
                         </div>
                         <p class="product-text">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates adipisci, fugit non minus iusto dolore soluta commodi saepe aut porro laudantium tempore perspiciatis suscipit cum autem natus, nisi, quisquam libero quidem. Nobis tenetur quam maxime dignissimos iure voluptas blanditiis odit dolore aut! Ipsa, nesciunt suscipit? Consequuntur repellendus similique ipsa sequi?
+                            {{$product->description}}
                         </p>
 
-                        <h6>Hurry Up! Only 98 products left in stock.</h6>
+                        <h6>Hurry Up! Only {{$product->quantity}} products left in stock.</h6>
 
                         <form>
-                            <input type="number" value="1">
+                            <input type="number" value="1"  min="1" max="{{$product->quantity}}">
                             <button>add to cart</button>
                         </form>
     
@@ -102,412 +168,13 @@
         </div>
     </section>
     
-
-    <section class="sale-sec contanier swiper mySwiper">
-
-        <div class="section-head">
-            <h4>Best Selling <span>Products</span> </h4>
-        </div>
         
-        <div class="boxs swiper-wrapper">
+       
 
-            <div class="box column product-item swiper-slide">
+   
+    <script src="{{asset('userdashboard/swiperJs/swiper-bundle.min.js')}}"></script>
 
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-8.jpg" class="img-product">
-                    <img src="img/product-1.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-2.jpg" class="img-product">
-                    <img src="img/product-9.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-3.jpg" class="img-product">
-                    <img src="img/product-10.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-4.jpg" class="img-product">
-                    <img src="img/product-8.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-
-            <div class="box column product-item swiper-slide">
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-9.jpg" class="img-product">
-                    <img src="img/product-16.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-12.jpg" class="img-product">
-                    <img src="img/product-3.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-15.jpg" class="img-product">
-                    <img src="img/product-1.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-14.jpg" class="img-product">
-                    <img src="img/product-6.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-7.jpg" class="img-product">
-                    <img src="img/product-11.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-            <div class="box column product-item swiper-slide">
-
-                <div class="product-btn">
-                    <ul class="product-action">
-                        <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-                        <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
-                    </ul>
-                </div>
-                <div class="div-img">
-                    <span class="discount">34%</span>
-                    <img src="img/product-15.jpg" class="img-product">
-                    <img src="img/product-16.jpg" class="hover-img">
-                </div>
-                <div class="content">
-                    <a class="product-item-link"> Original Mobile Android Dual SIM Smart Phone G3 </a>
-                    <div class="stars">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                    </div>
-                    <div class="price">
-                        <span>$120.00</span>
-                        <del>$125.00</del>
-                    </div>
-        
-                </div>
-            </div>
-
-
-        </div>
-
-        
-        <div class="swiper-button-next swiper-btn"></div>
-        <div class="swiper-button-prev swiper-btn"></div>
-
-    </section>
-
-    <footer>
-        <div class="contanier">
-            <div class="top-footer">
-                <div class="row">
-                    <img src="img/logo-white.png" alt="">
-                    <div class="hotline">
-                        <i class="fa-solid fa-headset"></i>
-                        <div class="hotline-text">
-                            <h6>Hotline Free 24/24:</h6>
-                            <span>(+100) 123 456 7890</span>
-                        </div>
-                    </div>
-                    <p>Add: Roma Street 90, Egypt</p>
-                        <p>Email: info@mahmoudreda.com</p>
-                    <p>Fax: (+300) 123 456 7890 - (+200) 321 654 7891</p>
-                </div>
-                <div class="small-row">
-                    <h6>Information</h6>
-                    <div class="links-row">
-                        <a href="#">Custom Service</a>
-                        <a href="#">F.A.Q.’s</a>
-                        <a href="#">Ordering Tracking</a>
-                        <a href="#">Contacts</a>
-                        <a href="#">Events</a>
-                        <a href="#">Popular</a>
-                    </div>
-                </div>
-
-                <div class="small-row">
-                    <h6>Our Services</h6>
-                    <div class="links-row">
-                        <a href="#">Sitemap</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Your Account</a>
-                        <a href="#">Advanced Search</a>
-                        <a href="#">Terms & Condition</a>
-                        <a href="#">Contact Us</a>
-                    </div>
-                </div>
-
-                <div class="small-row">
-                    <h6>My Account</h6>
-                    <div class="links-row">
-                        <a href="#">About us</a>
-                        <a href="#">Delivery Information</a>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Discount</a>
-                        <a href="#">Custom Service</a>
-                        <a href="#">Terms & Condition</a>
-                    </div>
-                </div>
-
-                
-                <div class="small-row">
-                    <h6>Payment & Shipping</h6>
-                    <div class="links-row">
-                        <a href="#">Terms Of Use</a>
-                        <a href="#">Payment Methods</a>
-                        <a href="#">Shipping Guide</a>
-                        <a href="#">Locations We Ship To</a>
-                        <a href="#">Estimated Delivery Time</a>
-                        <a href="#">Express</a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="bottom-footer">
-            <div class="contanier">
-                <p>Copyright &copy; <span>Topico. </span>All Rights Reserved <span>Simple Web Code</span></p>
-            <div class="payment">
-                <img src="img/payment-1.png" alt="">
-                <img src="img/payment-2.png" alt="">
-                <img src="img/payment-3.png" alt="">
-                <img src="img/payment-4.png" alt="">
-            </div>
-            </div>
-        </div>
-    </footer>
-
- @endsection
+    <!-- Linke File JS -->
+    <script src="{{asset('userdashboard/main.js')}}"></script>
+</body>
+</html>

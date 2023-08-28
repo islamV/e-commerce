@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\ProductsController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $products=Product::get();
+    return view('welcome' ,compact('products'));
 });
 
 Route::get('/dashboard', function () {
@@ -43,11 +45,11 @@ Route::middleware(['auth','role:Admin'])->group(function(){
 });
 
 Route::resource('/Image','ImageController');
- Route::get('Buy product',function(){
-return view('big-ecommerce-main.buy product');
- })->name('Buy');
-
+Route::get('Buy product/{id}',[ProductsController::class ,'buy'])->name('Buy'); //موقتا 
 // product routev 
+Route::get('Buy' ,function(){
+    return view('big-ecommerce-main.buy product');
+});
 
 
 

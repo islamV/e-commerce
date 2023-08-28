@@ -8,14 +8,14 @@
     <title>Micro electric</title>
 
     <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="{{asset('userdashboard/swiperJs/swiper-bundle.min.css')}}" />
-
+    <link rel="stylesheet" href="{{asset('userdashboard/swiperJs/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('userdashboard/main.css')}}" />
+    
     <!-- Link Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <!-- Link File CSS -->
     <link rel="stylesheet" href="{{asset('userdashboard/style.css')}}">
-    <link rel="stylesheet" href="{{asset('userdashboard/main.css')}}">
 </head>
 <body>
 
@@ -23,7 +23,8 @@
         @include('big-ecommerce-main.layouts.header')
         @include('big-ecommerce-main.layouts.slide')
     </header>
- @yield('content')
+ @yield('content') 
+ 
  @include('big-ecommerce-main.layouts.footer')
     <!-- Swiper JS -->
     <script src="{{asset('userdashboard/swiperJs/swiper-bundle.min.js')}}"></script>

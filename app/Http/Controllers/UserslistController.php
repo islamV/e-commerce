@@ -7,7 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
-use App\Models\Image;
+use App\Models\profile;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Support\Facades\Hash;
@@ -109,6 +109,7 @@ class UserslistController extends Controller
      */
     public function destroy(string $id)
     {
+        profile::where('profile_id', $id)->delete();
         User::where('id', $id)->delete();
         return redirect('UsersList')->with('success', 'Deleted successfuly');
     }
