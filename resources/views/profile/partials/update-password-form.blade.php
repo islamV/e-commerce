@@ -34,15 +34,14 @@
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
-            @if (session('status') === 'password-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
-            @endif
+            @if (session('success') === 'password updated successfuly')
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Done!</strong> {{ session('success') }}!
+            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </a>
+        </div>
+    @endif
         </div>
     </form>
 </section>

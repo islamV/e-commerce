@@ -1,14 +1,5 @@
 <div class="nav">
-    
-    <a href="#" class="card card_link">
-        <img src="https://f.nooncdn.com/s/app/com/noon/icons/cart.svg" alt="">
-        <span class="card_title">عربة التسوق</span>
-    </a>
 
-    <a href="#" class="card card_fov">
-        <img src="https://f.nooncdn.com/s/app/com/noon/icons/wishlist.svg" alt="">
-        <span class="card_title">المفضلة</span>
-    </a>
  @if (Route::has('login'))
  @auth
  <input type="checkbox" id="open_menu">
@@ -17,7 +8,7 @@
      <label for="open_menu">
          <span class="card_title">
              <span class="account_name">!{{Auth::user()->name}}اهلا</span>
-             <span class="profile">حسابى</span>
+             <span class="profile">Account</span>
          </span>
      </label>
  </a>
@@ -26,12 +17,12 @@
         @if(Route::has('login'))
         @if (Auth::user()->profile->role == "Admin")
           <li><a href="{{route('dashboard')}}"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
-            <span>Dashboard</span></a></li>  
+            <span>Dashboard</span></a></li>
         @endif
-        
 
-        <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
-                <span>الاسم</span></a></li>
+
+        <li><a href="{{route('profile.edit')}}"><img src="https://f.nooncdn.com/s/app/com/noon/icons/user_thin.svg">
+                <span>Profile</span></a></li>
         <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
                 <span>الاسم</span></a></li>
         <li><a href="#"> <img src="https://f.nooncdn.com/s/app/com/noon/icons/orders_menu_icon_v3.svg">
@@ -40,7 +31,7 @@
                 <span>الاسم</span></a></li>\
 @endif
     </ul>
-    <a href="{{route('login')}}" class="log_out">Log out</a>
+    <a href="{{route('logout')}}" class="log_out">Log out</a>
 </div>
 @else
 
@@ -52,7 +43,7 @@
 </a>
 
 @if (Route::has('register'))
-   
+
 <a href="{{ route('register') }}" class="card card_account">
     <img src="https://f.nooncdn.com/s/app/com/noon/icons/user_thin.svg" alt="">
     <span class="card_title">
@@ -62,7 +53,7 @@
 @endif
 @endauth
 @endif
- 
+
 
     <a href="#" class="card card_lang">
         <span class="card_title">English</span>
@@ -72,10 +63,10 @@
 
 
 
-    <a href="#" class="card card_logo">
-        <img src="img/default.svg" alt="">
+    <a href="{{route('welcome')}}" class="card card_logo">
+
     </a>
 
-    
+
 
 </div>

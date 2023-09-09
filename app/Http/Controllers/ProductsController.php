@@ -15,11 +15,11 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $products =  Product::get();
-       
-        return view('pages.dashbord.products.products_list',compact('products'));
+
+        return view('pages.dashbord.products.products_list', compact('products'));
     }
 
     /**
@@ -33,39 +33,38 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse{
-        // dd($request->all());
-
-     $data = $request->validate([
-        'title'=>'required|string',
-        'description'=>'required|string',
-        'price'=>'required|integer',
-        'availability'=>'required|boolean',
-        'quantity'=>'required|integer',
-        'category_name'=> 'required|string',
-        'image' => 'required|array',
-        'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-    
-      
-     ]);
+    public function store(Request $request): RedirectResponse
+    {
 
 
-     $imageData = [];
+        $data = $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'availability' => 'required|boolean',
+            'quantity' => 'required|integer',
+            'category_name' => 'required|string',
+            'image' => 'required|array',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'details'
 
-     foreach ($data['image'] as $image) {
-        $extension = $image->getClientOriginalExtension();
-        $imageName = time() . '_' . mt_rand(1000, 9999) . '.' . $extension;
-        $image->move(public_path('photos'), $imageName);
-    
-        $imageData[] = $imageName; // Store only the image name
-     }
-$data['image'] =$imageData;
+        ]);
+        $imageData = [];
+        $data['details'] = $request['details'];
+        foreach ($data['image'] as $image) {
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time() . '_' . mt_rand(1000, 9999) . '.' . $extension;
+            $image->move(public_path('photos'), $imageName);
 
-     $product = Product::create($data);
-     $product->category()->create($data); 
-    $product->image()->create($data);
+            $imageData[] = $imageName; // Store only the image name
+        }
+        $data['image'] = $imageData;
 
-    return redirect('Products')->with('success' ,'Add new product successfuly');
+        $product = Product::create($data);
+        $product->category()->create($data);
+        $product->image()->create($data);
+
+        return redirect('Products')->with('success', 'Add new product successfuly');
     }
 
     /**
@@ -73,20 +72,22 @@ $data['image'] =$imageData;
      */
     public function show(string $id)
     {
-        $product=Product::find($id)->first();
+        $product = Product::find($id);
 
-   
-     $images=Image::find($id);
+        $products = Product::get();
 
-     return view('pages.dashbord.products.view',compact(['product' ,'images']));
+        return view('pages.dashbord.products.view', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit(string $id) {
+
+     $product = Product::find($id);
+        return view('pages.dashbord.products.edit', compact('product'));
+
+
     }
 
     /**
@@ -102,13 +103,45 @@ $data['image'] =$imageData;
      */
     public function destroy(string $id)
     {
-        Category::where('product_id',$id)->delete();
-      Product::where('id',$id)->delete();
-     return  redirect('Products')->with('success' ,'deleted product successfuly');
+        Category::where('product_id', $id)->delete();
+        Image::where('product_id', $id)->delete();
+        Product::where('id', $id)->delete();
+
+        return  redirect('Products')->with('success', 'deleted product successfuly');
     }
 
-    public function buy(string $id){
-        $product= Product::find($id);
-        return view('big-ecommerce-main.buy product' ,compact('product'));
+    public function showProduct(string $id)
+    {
+        $product = Product::find($id);
+        $products = Product::get();
+
+        return view('big-ecommerce-main.show product', compact('product', 'products'));
+    }
+    public function addToCart($id){
+
+        $product = Product::find($id);
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+             'id'=>$product->id ,  'title' => $product->title, 'price' => $product->price, 'image' => '/photos/' . $product->image->image[0], 'quantity' => 1
+            ];
+        }
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Added to your cart successfully');
+    }
+
+    public function removeCart($id){
+        // Retrieve the cart from the session
+        $cart = session()->get('cart', []);
+
+        // Remove the item with the given ID from the cart
+        unset($cart[$id]);
+
+        // Update the session with the modified cart
+        session(['cart' => $cart]);
+
+        return redirect()->back(); // Redirect to the cart page
     }
 }

@@ -4,7 +4,7 @@
         <h4>Deals <span>of the day</span> </h4>
     </div>
     <div class="boxs swiper-wrapper">
-@foreach ($products as $product )
+      @foreach ($products as $product )
     
 
 
@@ -19,13 +19,13 @@
     </div>
 
     <div class="div-img">
-        <span class="discount">34%</span>
+        {{-- <span class="discount"></span> --}}
         
-        <img src=" {{ asset('photos/' . $product->image[0]->image[0]) }}" class="img-product">
-        <img src="{{ asset('photos/' . $product->image[0]->image[1]) }}" class="hover-img">
+        <img src=" {{ asset('photos/' . $product->image->image[0]) }}" class="img-product">
+        <img src="{{ asset('photos/' . $product->image->image[0]) }}" class="hover-img">
     </div>
     <div class="content">
-        <a href="{{ route('Buy',['id'=>$product->id]) }}" class="product-item-link"> {{ $product->title }}</a>
+        <a href="{{route('show',['id'=>$product->id])}}?title={{$product->title}}" class="product-item-link"> {{ $product->title }}</a>
         <div class="stars">
             <i class="fa-solid fa-star"></i>
             <i class="fa-solid fa-star"></i>
@@ -35,7 +35,7 @@
         </div>
         <div class="price">
             <span> ${{ $product->price }}</span>
-            <del>$1000</del>
+            <del></del>
         </div>
         <p class="product-parg"> {{ $product->description }}</p>
         <h4>Hurry Up! Offer ends in:</h4>

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->longText('details')->nullable();
             $table->boolean('availability');
             $table->decimal('price' ,8,2);
             $table->integer('quantity');
+            $table->json('details')->nullable();
             $table->timestamps();
         });
     }

@@ -4,11 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable=['title','description' ,'price' ,'availability' ,'quantity'];
+    protected $fillable=['title','description' ,'price' ,'availability' ,'quantity' ,'details'];
+
+    public static function find($productId)
+    {
+    }
+
     public function category(){
         return $this->hasOne(Category::class);
     }
@@ -16,14 +23,20 @@ class Product extends Model
         return $this->belongsToMany(order::class);
     }
     public function image(){
-        return $this->hasMany(Image::class);
+        return $this->hasOne(Image::class);
     }
     public function getAvailabilityAttribute(){
         if($this->attributes['availability']==1){
-            echo'<span class="badge badge-success ml-1">Available</span>';
+            echo "Available";
             }elseif ($this->attributes['availability']==0) {
-                echo '<span class="badge badge-danger ml-1">Unavailable</span>';
-            
+                echo "Unavailable";
+
                 }
     }
+    public function details() : Attribute {
+        return Attribute::make(
+            get: fn($value)=>json_decode($value,true),
+            set: fn($value)=>json_encode($value)
+        );
+     }
 }

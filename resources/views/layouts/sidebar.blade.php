@@ -64,7 +64,7 @@
                                 <a class="nav-link" href="pages/cards.html"> Smart Watches</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="pages/cards.html">Headphones</a>
+                                <a class="nav-link" href="pages/cards.html">VR</a>
                                 </li>
                         </ul>
                     </div>

@@ -244,7 +244,6 @@
          'Zambia',
          'Zimbabwe',
     ];
-
 @endphp
 <section>
     <header>
@@ -260,18 +259,11 @@
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
-
+   
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
-        @if (session('status'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Done!</strong> {{ session('status') }}!
-            <a href="#" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </a>
-        </div>
-    @endif
+       
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
@@ -313,7 +305,7 @@
                     <x-input-error class="mt-2" :messages="$errors->get('age')" />
                 </div>
                 <div >
-                    <x-input-label for="email" :value="__('Gender')" />
+                    <x-input-label for="Gender" :value="__('Gender')" />
                     <select class="form-control" id="input-select" name="gender">
                             <option @selected($user->profile->gender == 'male') value="male">Male</option>
                             <option @selected($user->profile->gender == 'female') value="female">Female</option>
@@ -323,7 +315,8 @@
                 <div >
              
                     <x-input-label for="country" :value="__('Country')" />  
-                    <select name="country"  class="form-control" >             
+                    <select name="country"  class="form-control" >   
+                        <option value="">Select your Country</option>          
                         @foreach ($countries as   $country )
                             <option @selected($user->profile->country == $country)  value="{{ $country }}">{{  $country  }}</option>
                         @endforeach
@@ -333,16 +326,14 @@
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-            @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
-            @endif
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Done!</strong> {{ session('success') }}!
+                <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </a>
+            </div>
+        @endif
         </div>
     </form>
 </section>

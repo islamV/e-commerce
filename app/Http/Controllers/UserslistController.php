@@ -22,9 +22,9 @@ class UserslistController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { 
+    {
         $users = User::groupBy('id')->get();
-        
+
         return view('pages.users.users.users_list', compact('users'));
     }
 
@@ -56,7 +56,7 @@ class UserslistController extends Controller
 
        $user= User::create($data);
        $user->profile()->create($data);
-        return redirect('UsersList')->with(['success' => 'Adding new User successfuly']);
+        return redirect('UsersList')->with(['success' => 'Adding new User successfully']);
     }
 
     /**
@@ -66,7 +66,7 @@ class UserslistController extends Controller
     {
         $users = User::find($id);
 
-        return view('pages.users.users.view', compact('users', 'image'));
+        return view('pages.users.users.view', compact('users', ));
     }
 
     /**
@@ -76,7 +76,7 @@ class UserslistController extends Controller
     {
         $user = User::find($id);
 
-        return view('pages.users.users.edit', compact('user', 'userImage'));
+        return view('pages.users.users.edit', compact('user', ));
     }
 
     /**
@@ -85,7 +85,7 @@ class UserslistController extends Controller
 
     public function update(UsersUpdateRequest  $request, string $id): RedirectResponse
     {
-       
+
         $request->validated();
 
         if ($request->user()->isDirty('email')) {
@@ -99,7 +99,7 @@ class UserslistController extends Controller
         ]);
        $request->user()->save();
        $request->user()->profile->save();
-      
+
 
         return redirect()->back()->with(['success' => 'Updated Profile successfuly']);
     }

@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('app.css')}}">
+    <link rel="stylesheet" href="{{asset('userdashboard/main.css')}}" />
+    
     <title>profile</title>
 </head>
 <body>
-    @include('layouts.header')
+    @include('big-ecommerce-main.layouts.header')
     <x-app-layout>
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -35,12 +36,41 @@
     </x-app-layout>
     
 </body>
-<script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
-<script src="{{ asset('assets/libs/js/main-js.js') }}"></script>
-<script src="{{ asset('assets/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
-</html>
+<script src="{{asset('userdashboard/main.js')}}"></script>
+<style>
+    .alert {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
 
+    .alert.alert-success {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+        color: #155724;
+    }
+
+    .alert a.close {
+        color: inherit;
+        text-decoration: none;
+     }  
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const closeButtons = document.querySelectorAll(".alert .close");
+        
+        closeButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const alert = this.closest(".alert");
+                alert.style.display = "none";
+            });
+        });
+    });
+</script>
+</html>
 {{-- @extends('indexUser')
 @section('title')
 profile

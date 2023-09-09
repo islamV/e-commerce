@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Product ;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
+use Illuminate\Http\RedirectResponse ;
 
 class OrdersController extends Controller
 {
@@ -17,9 +23,7 @@ class OrdersController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create(){
     }
 
     /**
@@ -61,4 +65,23 @@ class OrdersController extends Controller
     {
         //
     }
+
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    public function order(): RedirectResponse{
+
+            $carts  = session()->get('cart' ,[]);
+
+           $order =Order::create([
+            'product_id' => $carts[1]['id'],
+            'user_id' => Auth::user()->id,
+            'quantity' =>$carts[1]['quantity'] ,
+            'total_price' => ($carts[1]['price']*$carts[1]['quantity']) ,
+
+           ]) ;
+            return redirect()->back()->with('success' ,'Ordered successfuly');
+         }
+
 }

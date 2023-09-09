@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\OrdersController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,12 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $products=Product::get();
     return view('welcome' ,compact('products'));
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     if(Auth::user()->profile->role =="Admin"){
         // Via a request instance...
-        return view('dashboardAdmin');
+        return view('index');
     }{
         return redirect('/');
     }
@@ -37,26 +38,26 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('carts' ,function(){
+return view('big-ecommerce-main.mycart');
+})->name('carts');
+Route::get('addToCart/{id}' ,[ProductsController::class ,'addToCart'])->name('addToCart');
+Route::get('removeCart/{id}' ,[ProductsController::class ,'removeCart'])->name('removeCart');
+
+
 Route::middleware(['auth','role:Admin'])->group(function(){
 
     Route::resource('UsersList' ,'UserslistController');
     Route::resource('EmployeeList' ,'EmployeeController');
     Route::resource('Products' ,'ProductsController');
 });
-
-Route::resource('/Image','ImageController');
-Route::get('Buy product/{id}',[ProductsController::class ,'buy'])->name('Buy'); //موقتا 
-// product routev 
-Route::get('Buy' ,function(){
-    return view('big-ecommerce-main.buy product');
+Route::middleware(['auth'])->group(function(){
+    Route::resource('Order', 'OrdersController');
+    Route::get('CHECKOUT', [OrdersController::class ,'order'])->name('order');
 });
 
-
-
-
-//islam
-
-
+Route::get('product/{id}',[ProductsController::class ,'showProduct'])->name('show'); //موقتا 
 
 Route::fallback(function () {
     return redirect('/');
