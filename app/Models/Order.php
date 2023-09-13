@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id','product_id' ,'quantity' ,'with_offer' ,'total_price'];
+    protected $fillable=['id','user_id','product_id' ,'quantity' ,'with_offer' ,'total_price'];
 
 
     public function product()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
     public function user(){
         return $this->belongsTo(User::class);

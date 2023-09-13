@@ -1,9 +1,10 @@
 <div>
     <section class="cart">
-       @if (session('cart'))
+      
         <form action="#">
             <div class="table-content">
-               <table class="table">
+               <table class="table"> 
+                  @if (session('cart'))
                      <thead>
                         <tr>
                            <th class="product-thumbnail">Images</th>
@@ -15,9 +16,10 @@
                         </tr>
                      </thead>
                      <tbody>
+                    
                         
-                        @foreach($cartItems as $item)
-                        <tr>
+                     @foreach($cartItems as $item)
+                     <tr>
                           
                               <td class="product-thumbnail"><a href="#"><img src="{{asset($item['image'])}}"  alt=""></a></td>
                               <td class="product-name"><a href="#">{{$item['title']}}</a></td>
@@ -37,10 +39,14 @@
                            
                         </tr>
                     @endforeach
-                    
-                         
-                    </tbody>
-                </table>
+                   
+            </tbody>
+            @else
+        There are no more items in your cart 
+    
+           
+            @endif       
+         </table>
                </div>
                
                <div class="row contanier">
@@ -51,12 +57,12 @@
                         <li>Subtotal :{{$total}} <span></span></li>
                         <li>Total :{{$total}}   <span></span></li>
                      </ul>
-                     <a class="button" href="{{route('order')}}">Proceed to checkout</a>
+                     <a class="button" href="{{route('orderFromCart')}}">Proceed to checkout</a>
                   </div>
                </div>
             </form>
-            
-            @endif 
+   
+         
          </section>
 
 </div>

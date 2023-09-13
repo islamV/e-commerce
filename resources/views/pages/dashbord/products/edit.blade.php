@@ -11,6 +11,7 @@
 
     <form action="{{ route('Products.update',['Product'=>$product->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('put')
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -46,11 +47,10 @@
                             <h3>Price </h3>
                             <input id="inputText2" type="number" class="form-control" name="price" value="{{old('price' , $product->price)}}">
                         </div>
-                        @livewire('category', ['id' => $product->id], key($product->id))
 
 
-   
-                        <div class="stock-model">
+                        @livewire('category1', ['id' => $product->id], key($product->id))
+                        <div class="stock-model"> 
                             <h3>Availability:
                                 <div class="custom-control custom-radio">
                                     <input type="radio"name="availability" value="1"
@@ -83,6 +83,7 @@
                         <div class="custom-file mb-3">
                             <input type="file" name="image[]" multiple class="custom-file-input" id="customFile">
                             <label class="custom-file-label" for="customFile">images</label>
+                            <span style="color: red">whene you update images will be deleted  </span>
                             <p>insert one or more photos</p>
                         </div>
                         {{-- <div class="custom-file mb-3">
@@ -95,7 +96,7 @@
                                 <label class="custom-file-label" for="customFile">image 3</label>    
                             </div> --}}
                             <hr>
-                        <button type="submit" class="btn btn-outline-dark">ADD Product</button>
+                        <button type="submit" class="btn btn-outline-dark">Update</button>
                     </div>
 
                 </div>

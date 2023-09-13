@@ -35,7 +35,8 @@
                             <h3>Price </h3>
                             <input id="inputText2" type="number" class="form-control" name="price" value="{{old('price')}}">
                         </div>
-                        @livewire('category') 
+                        @livewire('category')
+
                         <div class="stock-model">
                             <h3>Availability:
                                 <div class="custom-control custom-radio">

@@ -2,16 +2,26 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB ;
-
 use Livewire\Component;
-
-class Category extends Component
+use App\Models\Product;
+use Illuminate\Support\Facades\DB ;
+class Category1 extends Component
 {
     public $selectedCategory = null;
+    public $productId;
+    public $p ;
+
+    public function mount($id)
+    { 
+        $this->productId = $id;
+        $this->p =Product::get()->find($id);
+        $this->selectedCategory =$this->p->category->category_name ;
+     
+
+    }
  
-    public function render(){
+ 
+  public function render(){
   
         $data = DB::table('possibilities')->first();
       
@@ -27,10 +37,11 @@ class Category extends Component
         // Now you have associative arrays for all the JSON columns
         
         $color =[
-            'black',
-            'silver',
-            'blue',
-            ];
+        'black',
+        'silver',
+        'blue',
+        ];
+     
         $categories = [
             ['id' => 'Laptops & Computers', 'name' => 'Laptops & Computers'],
             ['id' => 'Smart Phone', 'name' => 'Smart Phone'],
@@ -48,7 +59,7 @@ class Category extends Component
                 'GPU' => $GPU['GPU'],
                 'CPU Model' => $CPU['processors'],
                 'Color' => $color,
-                'Screen Size' => $screenSize['pc'],
+                'Screen Size' => array_merge($screenSize['pc'],$screenSize['laptop']),
             ],
             'Smart Phone' => [
                 'Brand Name' => $brands['Smart Phone'],  
@@ -68,12 +79,15 @@ class Category extends Component
                 'Model Name' => [],  // Fill with actual data
             ],
         ];
-
-        return view('livewire.category' ,[
+           
+        return view('livewire.category1' ,[
             'categories' => $categories,
             'features' => $this->selectedCategory ? $features[$this->selectedCategory] : [],
+            'product'=> Product::get()->find($this->productId)
    
 
         ]);
-    }
+   
+ 
+}
 }

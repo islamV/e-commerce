@@ -16,7 +16,7 @@ body {
 .nav {
     width: 100%;
     height: 65px;
-    background-color: #12a61c;
+    background-color: #14263e;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,7 @@ body {
     content: '';
     width: 2px;
     height: 20px;
-    background-color: #1d1d1d69;
+    background-color: #ffffff69;
     right: 0;
 }
 
@@ -61,13 +61,13 @@ body {
 .nav .card_link span,
 .nav .card_fov span {
     font-size: 13px;
-    color: #1d1d1d;
+    color: #ffffff;
     font-weight: 600;
 }
 
 .nav .card_account .log_name {
     font-size: 12px;
-    color: #1d1d1d;
+    color: #ffffff;
     font-weight: 600;
 }
 
@@ -87,12 +87,12 @@ body {
 
 .nav .card_account .card_title .account_name {
     font-size: 12px;
-    color: #1d1d1d;
+    color: #ffffff;
 }
 
 .nav .card_account .card_title .profile {
     font-size: 15px;
-    color: #1d1d1d;
+    color: #ffffff;
 }
 
 #open_menu {
@@ -114,7 +114,7 @@ body {
     top: 60px;
     left: 298px;
     background-color: white;
-    box-shadow: 0 0 10px 0 #1d1d1d1f;
+    box-shadow: 0 0 10px 0 #ffffff1f;
     display: none;
     transition: 0.3s;
     z-index: 9999;
@@ -128,7 +128,7 @@ body {
     width: 20px;
     height: 20px;
     top: -5px;
-    left: 10px;
+    left: -10px;
     transform: rotate(45deg);
     z-index: -1;
 }
@@ -155,13 +155,13 @@ body {
     height: 40px;
     gap: 10px;
     text-decoration: none;
-    color: #1d1d1d;
+    color: #000000;
     transition: 0.3s;
     padding: 0 15px;
 }
 
 .nav .menu ul li a:hover {
-    background-color: #1d1d1d10;
+    background-color: #ffffff10;
 }
 
 .nav .menu .log_out {
@@ -170,9 +170,9 @@ body {
     height: 40px;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid #1d1d1d10;
+    border-top: 1px solid #ffffff10;
     text-decoration: none;
-    color: #1d1d1d;
+    color: #000000;
     font-size: 12px;
     transition: 0.3s;
 }
@@ -182,7 +182,7 @@ body {
 }
 
 .nav .card_lang span{
-    color: #1d1d1d;
+    color: #ffffff;
 }
 
 .nav #search {
@@ -204,9 +204,21 @@ body {
     gap: 10px;
 }
 
-.nav .card_logo img {
-    width: 100px;
+.nav {
+    display: flex;
+    justify-content: space-between; /* This will push the .card_logo to the most right */
+    align-items: center; /* Optional: Center the items vertically */
 }
+
+.nav .card_logo img {
+    width: auto;
+}
+
+
+
+
+
+
 
 .nav .card_adderss .card_title {
     text-align: end;
@@ -215,10 +227,10 @@ body {
 
 .nav .card_adderss .card_title span:nth-of-type(1) {
     font-size: 12px;
-    color: #1d1d1d;
+    color: #ffffff;
 }
 
 .nav .card_adderss .card_title span:nth-of-type(2) {
     font-size: 15px;
-    color: #1d1d1d;
+    color: #ffffff;
 }

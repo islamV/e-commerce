@@ -13,7 +13,7 @@
     <div class="product-btn">
         <ul class="product-action">
             <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
+            <li><a href="{{route('addToCart',['id'=>$product->id])}}"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
             <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
         </ul>
     </div>
@@ -22,7 +22,7 @@
         {{-- <span class="discount"></span> --}}
         
         <img src=" {{ asset('photos/' . $product->image->image[0]) }}" class="img-product">
-        <img src="{{ asset('photos/' . $product->image->image[0]) }}" class="hover-img">
+        <img src="{{ asset('photos/' . $product->image->image[1]) }}" class="hover-img">
     </div>
     <div class="content">
         <a href="{{route('show',['id'=>$product->id])}}?title={{$product->title}}" class="product-item-link"> {{ $product->title }}</a>

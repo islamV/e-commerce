@@ -39,8 +39,11 @@ class ProfileController extends Controller
             'country'=>$request->country,
             'gender'=>$request->gender,
         ]);
-  $request->user()->save();
-
+  $request->user()->update([
+    'name' => $request->name  ,
+    'email' => $request->email ,
+  ]);
+  
         return Redirect::route('profile.edit')->with('success', 'profile updated successfuly');
     }
 

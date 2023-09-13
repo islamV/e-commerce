@@ -26,6 +26,7 @@
 
         <div class="header-top">
          @include('big-ecommerce-main.layouts.header')
+         @include('big-ecommerce-main.layouts.header_bottom')
         </div>
 </header>
 
@@ -77,12 +78,12 @@
 
                         <h6>Hurry Up! Only {{$product->quantity}} products left in stock.</h6>
 
-                        <form method="post">
+                        <form method="POST">
                             @csrf
                             <input type="number"min="1" value="1" name="quantity" max="{{$product->quantity}}">
                         <a href="{{route('addToCart',['id'=>$product->id])}}" class="btn btn-outline-dark"> Add to Cart</a>
+                        <a href="{{route('BUY',['prodcutID'=>$product->id])}}" class="btn btn-outline-dark"> BUY NOW</a>
                         
-                
                         </form>
                        
                         <ul class="product-action">

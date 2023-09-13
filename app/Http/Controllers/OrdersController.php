@@ -70,18 +70,31 @@ class OrdersController extends Controller
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function order(): RedirectResponse{
+    public function orderFromCart(): RedirectResponse{
 
             $carts  = session()->get('cart' ,[]);
 
-           $order =Order::create([
-            'product_id' => $carts[1]['id'],
-            'user_id' => Auth::user()->id,
-            'quantity' =>$carts[1]['quantity'] ,
-            'total_price' => ($carts[1]['price']*$carts[1]['quantity']) ,
-
-           ]) ;
+        foreach($carts as  $cart){
+            Order::create([
+                'product_id' => $cart['id'],
+                'user_id' => Auth::user()->id,
+                'quantity' =>$cart['quantity'] ,
+                'total_price' => ($cart['price']*$cart['quantity']) ,
+    
+               ]) ;
+        }
             return redirect()->back()->with('success' ,'Ordered successfuly');
          }
+public function BUY($productID , Request $request){
+    $product=Product::findorfail($productID);
+    dd($request);
+    Order::create([
+        'product_id' => $productID,
+        'user_id' => Auth::user()->id,
+        'quantity' => $request->qunatity,
+        'total_price' => ($product->quantity*$request->qunatity ) ,
+
+       ]);
+}
 
 }

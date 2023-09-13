@@ -23,7 +23,7 @@
 
             <div class="price">
                 <p>My Cart:</p>
-                <span>$ 255.00</span>
+        
             </div>
         </div>
     </div>

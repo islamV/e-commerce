@@ -27,10 +27,9 @@ class Product extends Model
     }
     public function getAvailabilityAttribute(){
         if($this->attributes['availability']==1){
-            echo "Available";
+            $this->attributes['availability'] ="Available";
             }elseif ($this->attributes['availability']==0) {
-                echo "Unavailable";
-
+                $this->attributes['availability'] ="Unavailable";
                 }
     }
     public function details() : Attribute {

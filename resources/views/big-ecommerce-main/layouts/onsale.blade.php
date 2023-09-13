@@ -13,16 +13,17 @@
             <div class="product-btn">
                 <ul class="product-action">
                     <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-                    <li><a href="#"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
+                    <li><a href="{{route('addToCart',['id'=>$product->id])}}"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
                 </ul>
             </div>
 
             <div class="div-img">
                 <span class="discount"></span>
-   @foreach ( $product->image->image as  $image)
-   <img src="{{ asset('photos/' .$image) }}" class="img-product">
-   @endforeach
+
+   <img src="{{ asset('photos/' . $product->image->image[0]) }}" class="img-product">
+   <img src="{{ asset('photos/' . $product->image->image[1]) }}" class="hover-img">
+
         
             </div>
             <div class="content">

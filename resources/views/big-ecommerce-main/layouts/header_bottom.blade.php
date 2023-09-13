@@ -2,8 +2,14 @@
 <div class="header-bottom">
     <div class="contanier">
      <i id="open-side" class="fa-solid fa-bars"></i>
-     <ul class="nav-links">
+     <ul class="nav-links">  
+          @auth
+            @if (Auth::user()->profile->role ==="Admin")
          
+             <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+             <li>
+            @endif
+         @endauth
          <li><a href=".">Home</a></li>
 
          <li>
@@ -37,7 +43,13 @@
      <div class="card">
          <a href="{{route('carts')}}" ><i class="fa-solid fa-bag-shopping"></i></a>
          <!-- Added <span> element here -->
-         <span class="badge">{{count((array ) session('cart'))}}</span>
+            @php
+            $item =0 ;
+                foreach (session()->get('cart', []) as $cart ){
+                  $item += $cart['quantity'];                    
+                }
+            @endphp
+         <span class="badge">{{$item}}</span>
          <div class="price">
              <p>My Cart:</p>
          </div>

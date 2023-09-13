@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\OrdersController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +26,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     if(Auth::user()->profile->role =="Admin"){
-        // Via a request instance...
-        return view('index');
+    
+        return view('pages.dashbord.dashboard');
     }{
         return redirect('/');
     }
@@ -54,10 +55,20 @@ Route::middleware(['auth','role:Admin'])->group(function(){
 });
 Route::middleware(['auth'])->group(function(){
     Route::resource('Order', 'OrdersController');
-    Route::get('CHECKOUT', [OrdersController::class ,'order'])->name('order');
+    Route::get('CHECKOUT', [OrdersController::class ,'orderFromCart'])->name('orderFromCart'); 
+    Route::get('BUY/{prodcutID}/CHECKOUT', [OrdersController::class ,'BUY'])->name('BUY');
 });
 
 Route::get('product/{id}',[ProductsController::class ,'showProduct'])->name('show'); //موقتا 
+
+
+
+Route::get('set' ,function(){
+ session()->put('login' ,'login') ;
+});
+Route::get('get' ,function(){
+   echo  session()->get('login' ,'login') ;
+   });
 
 Route::fallback(function () {
     return redirect('/');

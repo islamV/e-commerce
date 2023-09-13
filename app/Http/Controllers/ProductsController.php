@@ -15,10 +15,10 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function index()
     {
         $products =  Product::get();
-
+        
         return view('pages.dashbord.products.products_list', compact('products'));
     }
 
@@ -64,7 +64,7 @@ class ProductsController extends Controller
         $product->category()->create($data);
         $product->image()->create($data);
 
-        return redirect('Products')->with('success', 'Add new product successfuly');
+        return redirect('Products')->with('success', 'Add new product successfully');
     }
 
     /**
@@ -72,10 +72,8 @@ class ProductsController extends Controller
      */
     public function show(string $id)
     {
-        $product = Product::find($id);
-
-        $products = Product::get();
-
+        $product = Product::get()->find($id);
+        
         return view('pages.dashbord.products.view', compact('product'));
     }
 
@@ -84,7 +82,7 @@ class ProductsController extends Controller
      */
     public function edit(string $id) {
 
-     $product = Product::find($id);
+        $product = Product::get()->find($id);
         return view('pages.dashbord.products.edit', compact('product'));
 
 
@@ -93,9 +91,36 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, string $id) {
+        $data = $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'availability' => 'required|boolean',
+            'quantity' => 'required|integer',   
+            'details'
+
+        ]);
+        
+        $imageData = [];
+        $data['details'] = $request['details'];
+        foreach ($request['image'] as $image) {
+            $extension = $image->getClientOriginalExtension();
+            $imageName = time() . '_' . mt_rand(1000, 9999) . '.' . $extension;
+            $image->move(public_path('photos'), $imageName);
+
+            $imageData[] = $imageName; // Store only the image name
+        }
+        $request['image'] = $imageData;
+
+$product = Product::get()->find($id);
+$product->update($data);
+$product->category()->where('product_id' ,$id)->update(['category_name'=>$request->input('category_name')]);
+$product->image()->update(['image' => $request->input('image')]);
+
+
+
+        return redirect('Products')->with('success', 'Updated  product successfully');
     }
 
     /**
@@ -112,14 +137,15 @@ class ProductsController extends Controller
 
     public function showProduct(string $id)
     {
-        $product = Product::find($id);
+        $product = Product::get()->find($id);
+
         $products = Product::get();
 
         return view('big-ecommerce-main.show product', compact('product', 'products'));
     }
     public function addToCart($id){
 
-        $product = Product::find($id);
+        $product = Product::get()->find($id);
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
