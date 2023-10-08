@@ -35,11 +35,12 @@
                 <div class="swiper-slide swiper-slide1">
                     <img src="img/slider-01.jpg" alt="">
                 </div>
-                <div class="swiper-slide swiper-slide2">
-                    <img src="img/slider-03.jpg"" alt="">
-                </div>
-                <div class="swiper-slide swiper-slide3">
-                    <img src="img/slider-02.jpg"" alt="">
+                <div class="swiper-slide swiper-slide1">
+                    <img src="img/slider-01.jpg" alt="">
+                </div>   <div class="swiper-slide swiper-slide1">
+                    <img src="img/slider-01.jpg" alt="">
+                </div>   <div class="swiper-slide swiper-slide1">
+                    <img src="img/slider-01.jpg" alt="">
                 </div>
              
             </div>

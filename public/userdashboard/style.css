@@ -261,9 +261,25 @@ p{
     border-radius: 50%;
     cursor: pointer;
 }
+
 .product-action li:hover{
-    background-color: var(--main-color);
+    background-color: transparent;
+    border: 1px solid red;
+
 }
+
+.product-action li:nth-of-type(2):hover{
+    background-color: transparent;
+    border: 1px solid rgb(0, 115, 255);
+}
+
+.product-action li:hover .fa-regular{
+    color: red;
+}
+.product-action li:hover .fa-solid {
+    color: rgb(0, 115, 255);
+}
+
 .product-action li a{
     color: var(--dark-color);
 }
@@ -1526,9 +1542,6 @@ td input{
 
 
 
-
-
-
 /* feature-bag */
 .feature-bag .top-fuature{
     text-align: center;
@@ -1692,7 +1705,7 @@ td input{
     display: inline-block;
 }
 
-.badge {
+.badged{
     font-size: 12px;
     padding: 6px 10px;
     line-height: 1;
@@ -1706,6 +1719,21 @@ td input{
 }
 .bg-danger {
     background-color: #dc3545;
+}
+.badge{
+    font-size: 12px;
+    padding: 6px 10px;
+    line-height: 1;
+    white-space: nowrap;
+    position: absolute;
+    border-radius: 50px;
+
+}
+.badge-danger {
+    background-color: #dc3545;
+}
+.badge-success {
+    background-color: #17ac14;
 }
 
 /* Adjust positioning for the badge */

@@ -43,7 +43,8 @@ class UserslistController extends Controller
     {
 
         $data =  $request->validate([
-            'name' => 'required|string',
+            'first name' => ['required', 'string', 'max:255'],
+            'last name' => ['required', 'string', 'max:255'],
             'email' => ['email', 'max:255'],
             'phone' => 'required|string',
             'age' => 'required|string',

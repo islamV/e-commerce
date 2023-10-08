@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class imageUpdateRequest extends FormRequest
+class UpdateProductsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true ;
     }
 
     /**
@@ -22,10 +22,12 @@ class imageUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'image' =>['sometimes|image'],
-        'image_id' =>['string'] ,
-        'image_type' =>['string']
-
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|integer',
+            'availability' => 'required|boolean',
+            'quantity' => 'required|integer',   
+            'details'
         ];
     }
 }

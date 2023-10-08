@@ -43,12 +43,12 @@ class Category extends Component
             'Laptops & Computers' => [
                 'Brand Name' => $brands['Laptops & Computers'],
                 'Operating System' => $os['Laptops & Computers'],
-                'Memory Storage Capacity' => $storage['storage'],
-                'RAM' => $RAM['ram'],
-                'GPU' => $GPU['GPU'],
-                'CPU Model' => $CPU['processors'],
+                'Memory Storage Capacity' => $storage['Storage'],
+                'RAM' => $RAM['RAM'],
+                'GPU' => $GPU,
+                'CPU Model' => $CPU['Processors'],
                 'Color' => $color,
-                'Screen Size' => $screenSize['pc'],
+                'Screen Size' => $screenSize['Computer_Laptop_Sizes'],
             ],
             'Smart Phone' => [
                 'Brand Name' => $brands['Smart Phone'],  

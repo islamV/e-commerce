@@ -57,18 +57,18 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('Order', 'OrdersController');
     Route::get('CHECKOUT', [OrdersController::class ,'orderFromCart'])->name('orderFromCart'); 
     Route::get('BUY/{prodcutID}/CHECKOUT', [OrdersController::class ,'BUY'])->name('BUY');
+    Route::get('CHECKOUT' , function(){
+        return view('big-ecommerce-main.checkout');
+    })->name('checkout');
 });
 
 Route::get('product/{id}',[ProductsController::class ,'showProduct'])->name('show'); //موقتا 
-
-
-
-Route::get('set' ,function(){
- session()->put('login' ,'login') ;
+Route::get('php',function(){
+    return view('php');
 });
-Route::get('get' ,function(){
-   echo  session()->get('login' ,'login') ;
-   });
+
+
+
 
 Route::fallback(function () {
     return redirect('/');

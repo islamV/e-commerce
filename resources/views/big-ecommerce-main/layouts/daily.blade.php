@@ -14,7 +14,6 @@
         <ul class="product-action">
             <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
             <li><a href="{{route('addToCart',['id'=>$product->id])}}"><i class="fa-solid fa-cart-arrow-down"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-print"></i></a></li>
         </ul>
     </div>
 

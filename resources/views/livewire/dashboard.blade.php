@@ -89,7 +89,7 @@
                     <td>{{$order->quantity}}</td>
                     <td>${{$order->total_price}}</td>
                     <td>{{$order->created_at}}</td>
-                    <td>{{$order->user->name}}</td>
+                    <td>{{$order->user->first_name}} {{$order->user->last_name}} </td>
                     <td><span class="badge-dot badge-brand mr-1"></span>InTransit </td>
                 </tr>
                 @endforeach 

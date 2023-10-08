@@ -112,13 +112,14 @@ body {
     width: 180px;
     height: fit-content;
     top: 60px;
-    left: 298px;
+    left: 20px;
     background-color: white;
-    box-shadow: 0 0 10px 0 #ffffff1f;
+    box-shadow: 0 0 10px #00000037;
     display: none;
     transition: 0.3s;
-    z-index: 9999;
+    z-index: 99999;
     flex-direction: column;
+    border-top-left-radius: 5px;
 }
 
 .nav .menu::before {
@@ -127,8 +128,8 @@ body {
     background-color: #fff;
     width: 20px;
     height: 20px;
-    top: -5px;
-    left: -10px;
+    top: -7px;
+    left: 4.5px;
     transform: rotate(45deg);
     z-index: -1;
 }
@@ -161,7 +162,7 @@ body {
 }
 
 .nav .menu ul li a:hover {
-    background-color: #ffffff10;
+    background-color: #00000010;
 }
 
 .nav .menu .log_out {

@@ -1,0 +1,469 @@
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100;200;300;400;500;600;700;800;900&family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Alexandria', sans-serif;
+}
+
+
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+}
+
+
+.nav_bar {
+    width: 100%;
+    height: 70px;
+    background-color: #e3e3e3a4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav_bar h3 {
+    font-size: 25px;
+}
+
+.contaner {
+    width: 100%;
+    height: calc(100vh - 70px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.contaner .add_details {
+    width: 800px;
+    height: 100%;
+    padding: 20px;
+}
+
+.contaner .add_details .box {
+    width: 100%;
+    height: fit-content;
+    object-fit: cover;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.5s;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #b6b6b6;
+    overflow: hidden;
+}
+
+.contaner .add_details .box .title_box {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+
+.contaner .add_details .box .title_box span {
+    font-size: 18px;
+    color: #000;
+}
+
+
+.contaner .add_details .box .box_address,
+.contaner .add_details .box .box_payment {
+    width: 100%;
+    height: fit-content;
+    z-index: 1;
+    border: 1px solid #b6b6b6;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.5s;
+    overflow: hidden;
+    display: none;
+}
+
+.contaner .add_details .box .box_address {
+    display: block;
+}
+
+.contaner .add_details .box .box_address .title_address,
+.contaner .add_details .box .box_payment .title_payment {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #b6b6b6;
+    display: flex;
+    align-items: center;
+}
+
+.contaner .add_details .box .box_address .title_address span,
+.contaner .add_details .box .box_payment .title_payment span {
+    font-size: 18px;
+    color: #000;
+    font-weight: 600;
+}
+
+.contaner .add_details .box .box_address .radio_address,
+.contaner .add_details .box .box_payment .radio_payment {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.contaner .add_details .box .box_address .radio_address .box_radio,
+.contaner .add_details .box .box_payment .radio_payment .box_radio {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgb(250, 160, 160);
+    background-color: rgba(248, 215, 215, 0.637);
+    margin-bottom: 10px;
+}
+
+.contaner .add_details .box .box_address .radio_address .add_adress,
+.contaner .add_details .box .box_payment .radio_payment .add_payment {
+    font-size: 15px;
+    cursor: pointer;
+    color: rgb(52, 123, 255);
+}
+
+.contaner .add_details .box .box_payment .radio_payment .box_radio {
+    height: fit-content;
+}
+
+.contaner .add_details .box .box_payment .radio_payment img {
+    width: 10%;
+}
+
+.contaner .add_details .box .box_payment .radio_payment label {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.contaner .add_details .box .box_payment .radio_payment label div {
+    width: 50%;
+    height: 100%;
+}
+
+.contaner .add_details .box .box_payment .radio_payment label div:nth-of-type(1) {
+    gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.contaner .add_details .box .box_payment .radio_payment label div:nth-of-type(1) div {
+    width: 80%;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+}
+
+.contaner .add_details .box .box_payment .radio_payment label div:nth-of-type(1) div span:nth-of-type(2){
+    font-size: 15px;
+}
+
+.contaner .add_details .box .box_payment .radio_payment label div:nth-of-type(2) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+.add_detials_address,
+.add_detials_payment {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.397);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.add_detials_address form,
+.add_detials_payment form {
+    width: 800px;
+    height: fit-content;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.397);
+    ;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.add_detials_address form .head,
+.add_detials_payment form .head {
+    width: 100%;
+    height: 70px;
+    background-color: #b6b6b660;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #918f8f;
+}
+
+.add_detials_address form .head span,
+.add_detials_payment form .head span {
+    font-size: 18px;
+    color: #000;
+    font-family: 800;
+}
+
+.add_detials_address form .head #exit,
+.add_detials_payment form .head #exit_2 {
+    padding: 10px 30px;
+    background-color: #918f8f;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.add_detials_payment .contact_details div {
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.add_detials_payment .contact_details div input {
+    width: 100%;
+    height: 30px;
+    border: 1px solid #000;
+    padding: 0 10px;
+}
+
+.add_detials_payment .contact_details div input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+}
+
+
+.add_detials_payment .contact_details div select {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #000;
+}
+
+.contact_details {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.contact_details .title {
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    color: #000;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.contact_details .box_input {
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.contact_details .box_input span,
+.contact_details .bo_ad div span {
+    font-size: 15px;
+    color: #000;
+    font-weight: 700;
+}
+
+.contact_details .box_input input,
+.contact_details .bo_ad div input {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 0 10px;
+}
+
+.contact_details .box_input input:nth-of-type(1) {
+    margin-bottom: 5px;
+}
+
+.contact_details .box_input select,
+.contact_details .bo_ad div select {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    padding: 0 5px;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    box-shadow: 0 0 10 rgba(0, 0, 0, 0.548);
+}
+
+
+.contact_details .bo_ad {
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact_details .bo_ad div span {
+    flex-direction: column;
+    width: 33%;
+}
+
+.add_detials_address form .contact_details button {
+    padding: 10px 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 196, 0);
+    cursor: pointer;
+}
+
+.add_detials_address form .contact_details button:hover {
+    background-color: rgb(233, 181, 11);
+}
+
+
+.contaner .add_details .box .buttom {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+}
+
+.contaner .add_details .box .buttom button {
+    padding: 10px 40px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 196, 0);
+    cursor: pointer;
+}
+
+.contaner .add_details .box .buttom button:hover {
+    background-color: rgb(233, 181, 11);
+}
+
+.contaner .box_inner {
+    width: 300px;
+    height: 400px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border: 1px solid #b6b6b6;
+    border-radius: 10px;
+}
+
+.contaner .box_inner .head {
+    width: 100%;
+    height: fit-content;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    text-align: center;
+    border-bottom: 1px solid #b6b6b6;
+    padding: 10px 0;
+}
+
+.contaner .box_inner .head button {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 196, 0);
+    font-size: 15px;
+    /* transition: 0.3s; */
+    cursor: pointer;
+}
+
+.contaner .box_inner .head button:hover {
+    background-color: rgb(233, 181, 11);
+}
+
+.contaner .box_inner .head p {
+    font-size: 12px;
+}
+
+.contaner .buttom {
+    width: 100%;
+    height: 250px;
+}
+
+.contaner .buttom .title {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+}
+
+.contaner .buttom .mony_order {
+    width: 100%;
+    height: 150px;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    border-bottom: 1px solid #b6b6b6;
+}
+
+.contaner .buttom .mony_order div {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contaner .buttom .mony_order div span {
+    font-size: 12px;
+}
+
+.contaner .buttom .total {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contaner .buttom .total span {
+    font-size: 18px;
+    color: rgb(199, 5, 5);
+    font-weight: 700;
+}

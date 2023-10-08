@@ -80,9 +80,13 @@ class OrdersController extends Controller
                 'user_id' => Auth::user()->id,
                 'quantity' =>$cart['quantity'] ,
                 'total_price' => ($cart['price']*$cart['quantity']) ,
-    
                ]) ;
+             $product = Product::get()->find($cart['id']) ;
+             $product->update([
+                "quantity"   => $product->quantity-$cart['quantity']
+             ]);
         }
+
             return redirect()->back()->with('success' ,'Ordered successfuly');
          }
 public function BUY($productID , Request $request){
@@ -93,7 +97,6 @@ public function BUY($productID , Request $request){
         'user_id' => Auth::user()->id,
         'quantity' => $request->qunatity,
         'total_price' => ($product->quantity*$request->qunatity ) ,
-
        ]);
 }
 

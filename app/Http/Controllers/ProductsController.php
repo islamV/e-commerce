@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductsRequest;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Image;
@@ -33,22 +34,11 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ProductsRequest $request): RedirectResponse
     {
 
 
-        $data = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|integer',
-            'availability' => 'required|boolean',
-            'quantity' => 'required|integer',
-            'category_name' => 'required|string',
-            'image' => 'required|array',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'details'
-
-        ]);
+        $data = $request->validated();
         $imageData = [];
         $data['details'] = $request['details'];
         foreach ($data['image'] as $image) {

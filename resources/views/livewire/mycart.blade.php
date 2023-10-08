@@ -57,7 +57,7 @@
                         <li>Subtotal :{{$total}} <span></span></li>
                         <li>Total :{{$total}}   <span></span></li>
                      </ul>
-                     <a class="button" href="{{route('orderFromCart')}}">Proceed to checkout</a>
+                     <a class="button" href="{{route('checkout')}}">Proceed to checkout</a>
                   </div>
                </div>
             </form>

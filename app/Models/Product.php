@@ -25,12 +25,11 @@ class Product extends Model
     public function image(){
         return $this->hasOne(Image::class);
     }
-    public function getAvailabilityAttribute(){
-        if($this->attributes['availability']==1){
-            $this->attributes['availability'] ="Available";
-            }elseif ($this->attributes['availability']==0) {
-                $this->attributes['availability'] ="Unavailable";
-                }
+    public function getAvailabilityAttribute(){ 
+    echo $this->attributes['availability'] === 1
+    ?'<span class="badge badge-pill badge-success">Available</span>' 
+    : '<span class="badge badge-pill badge-danger">Unavailable</span>';
+    
     }
     public function details() : Attribute {
         return Attribute::make(

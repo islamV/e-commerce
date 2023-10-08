@@ -49,7 +49,7 @@
                   $item += $cart['quantity'];                    
                 }
             @endphp
-         <span class="badge">{{$item}}</span>
+         <span class="badged">{{$item}}</span>
          <div class="price">
              <p>My Cart:</p>
          </div>

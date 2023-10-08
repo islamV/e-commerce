@@ -7,7 +7,7 @@
      <img src="https://f.nooncdn.com/s/app/com/noon/icons/caret-down.svg" alt="">
      <label for="open_menu">
          <span class="card_title">
-             <span class="account_name">!{{Auth::user()->name}}اهلا</span>
+             <span class="account_name">welcome!  {{Auth::user()->first_name}}  </span>
              <span class="profile">Account</span>
          </span>
      </label>

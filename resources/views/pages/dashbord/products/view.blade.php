@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{asset('userdashboard/swiperJs/swiper-bundle.min.css')}}" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="{{asset('userdashboard/style.css')}}">
+<link rel="stylesheet" href="{{asset('assets/libs/css/product.css')}}">
 @endpush
 @section('content')
 <section class="product-details">
@@ -34,9 +34,6 @@
 
                     <div class="stock-model">
                         <p>Availability: <span>{{$product->availability}}</span></p>
-
-                        <p>SKU: <span>Samsung C49J89: £875, Debentures Plus</span></p>
-
                     </div>
                     <p class="product-text">
                         {{$product->description}}

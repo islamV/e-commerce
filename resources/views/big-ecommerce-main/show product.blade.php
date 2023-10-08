@@ -69,9 +69,10 @@
                             <del></del>
                         </div>
                         
-                        <div class="stock-model">
-                            <p>Avaailability: <span>{{$product->availability}}</span></p>
-                        </div>
+                        
+                    <div class="stock-model">
+                        <p>Availability: {{$product->availability}}</p>
+                    </div>
                         <p class="product-text">
                          
                         </p>
